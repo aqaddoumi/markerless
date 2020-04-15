@@ -6,6 +6,6 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-app.listen(5000, () => {
+app.listen(3000, () => {
   console.log('Server is up on 3000');
 });
