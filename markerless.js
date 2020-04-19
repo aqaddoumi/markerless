@@ -199,10 +199,10 @@ const tapBusinessCardComponent = {
 
     const ground = document.getElementById('ground');
     ground.addEventListener('click', (event) => {
-      const touchPoint = event.detail.intersection.point;
-      parentEl.setAttribute('position', touchPoint);
-
       if (!hasUserTapped) {
+        const touchPoint = event.detail.intersection.point;
+        parentEl.setAttribute('position', touchPoint);
+
         hasUserTapped = true;
         hideInterface();
 
