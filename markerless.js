@@ -15,7 +15,7 @@ const xrScene = `
     <a-asset-item id="for-sale-model-asset" src="assets/for-sale-model.glb"></a-asset-item>
     <video id="talk-video-asset" muted autoplay playsinline crossorigin="anonymous" src="assets/talk-video.mp4"></video>
   </a-assets>
-  <a-camera id="camera" position="0 0 0" raycaster="objects: .cantap" cursor="fuse: false; rayOrigin: mouse;"></a-camera>
+  <a-camera id="camera-entity" position="0 0 0" raycaster="objects: .cantap" cursor="fuse: false; rayOrigin: mouse;"></a-camera>
   <a-box id="ground" class="cantap" scale="1000 2 1000" position="0 -1 0" material="shader: shadow; transparent: true; opacity: 0.4" shadow></a-box>
 </a-scene>
 `;
@@ -132,6 +132,7 @@ const tapBusinessCardComponent = {
     createSignElement();
 
     function createParentElement() {
+      parentEl.setAttribute('id', 'parent-entity');
       element.appendChild(parentEl);
     }
 
@@ -324,6 +325,14 @@ const tapBusinessCardComponent = {
         grassEl.object3D.visible = false;
       }, 1000);
     }
+  },
+  tick: function () {
+    const parentObj = document.getElementById('parent-entity').object3D;
+    const camera = document.getElementById('camera-entity').object3D;
+    parentObj.rotation.y = Math.atan2(
+      camera.position.x - parentObj.position.x,
+      camera.position.z - parentObj.position.z
+    );
   },
 };
 
