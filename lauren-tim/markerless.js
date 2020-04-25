@@ -6,6 +6,7 @@ const xrScene = `
 </div>
 <a-scene tap-business-card="videoAsset: #talk-video-asset" xrweb xrextras-almost-there xrextras-loading xrextras-runtime-error>
   <a-assets>
+    <audio id="pop-01-sound-asset" src="assets/pop-01-sound.mp3" preload="auto"></audio>
     <img id="loading-texture-asset" src="assets/loading-texture.png">
     <video id="talk-video-asset" muted autoplay playsinline crossorigin="anonymous" src="assets/talk-video.mp4"></video>
   </a-assets>
@@ -98,6 +99,8 @@ const tapBusinessCardComponent = {
       finishExperience();
     };
 
+    const pop01SoundAsset = document.getElementById('pop-01-sound-asset');
+
     //Assets
     const loadingTexAsset = document.getElementById('loading-texture-asset');
 
@@ -159,6 +162,9 @@ const tapBusinessCardComponent = {
         videoAsset.play();
         videoAsset.pause();
 
+        pop01SoundAsset.play();
+        pop01SoundAsset.pause();
+
         if (!hasVideoLoaded) {
           showLoadingElement();
         } else {
@@ -193,6 +199,8 @@ const tapBusinessCardComponent = {
           'animation',
           'property: scale; to: 1 1 1; dur: 1000; easing: easeOutElastic;'
         );
+        pop01SoundAsset.currentTime = 0;
+        pop01SoundAsset.play();
       }, 100);
     }
 
