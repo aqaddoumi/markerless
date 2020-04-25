@@ -201,7 +201,7 @@ const tapBusinessCardComponent = {
         );
         pop01SoundAsset.currentTime = 0;
         pop01SoundAsset.play();
-      }, 500);
+      }, 700);
     }
 
     function playVideo() {
