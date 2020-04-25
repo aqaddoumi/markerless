@@ -127,7 +127,7 @@ const tapBusinessCardComponent = {
       });
 
       const width = 1.5;
-      const height = (720 / 404) * width;
+      const height = (960 / 540) * width;
       videoEl.setAttribute('width', width);
       videoEl.setAttribute('height', height);
       videoEl.object3D.translateY(height / 2);
@@ -188,7 +188,12 @@ const tapBusinessCardComponent = {
       setTimeout(function () {
         videoEl.object3D.visible = true;
         videoAsset.muted = false;
-      }, 100);
+        videoEl.setAttribute('scale', '0 0 0');
+        videoEl.setAttribute(
+          'animation',
+          'property: scale; to: 1 1 1; dur: 500; easing: easeOutElastic;'
+        );
+      }, 50);
     }
 
     function playVideo() {
