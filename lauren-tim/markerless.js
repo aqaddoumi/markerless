@@ -191,9 +191,9 @@ const tapBusinessCardComponent = {
         videoEl.setAttribute('scale', '0 0 0');
         videoEl.setAttribute(
           'animation',
-          'property: scale; to: 1 1 1; dur: 500; easing: easeOutElastic;'
+          'property: scale; to: 1 1 1; dur: 1000; easing: easeOutElastic;'
         );
-      }, 50);
+      }, 100);
     }
 
     function playVideo() {
