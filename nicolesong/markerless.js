@@ -155,9 +155,9 @@ const tapBusinessCardComponent = {
     }
 
     function createCarpetElement() {
-      grassEl.object3D.visible = false;
-      g;
-      grassEl.setAttribute('rotation', '-90 0 0');
+      carpetEl.object3D.visible = false;
+      carpetEl.setAttribute('scale', '1 1.34 1');
+      carpetEl.setAttribute('rotation', '-90 0 0');
       grassEl.setAttribute('material', 'src', grassTexAsset);
       parentEl.appendChild(grassEl);
     }

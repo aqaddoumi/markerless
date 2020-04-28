@@ -147,7 +147,7 @@ const tapBusinessCardComponent = {
       });
 
       const width = 1.5;
-      const height = (720 / 404) * width;
+      const height = (960 / 540) * width;
       videoEl.setAttribute('width', width);
       videoEl.setAttribute('height', height);
       videoEl.object3D.translateY(height / 2);
@@ -159,7 +159,7 @@ const tapBusinessCardComponent = {
       loadingEl.object3D.visible = false;
       loadingEl.setAttribute('material', 'src', loadingTexAsset);
       loadingEl.setAttribute('material', 'transparent', true);
-      loadingEl.object3D.translateY(0.5);
+      loadingEl.object3D.translateY(0.75);
       loadingEl.setAttribute(
         'animation',
         'property: rotation; to: 0 0 -360; dur: 1000; loop: true; easing: linear'
@@ -255,7 +255,7 @@ const tapBusinessCardComponent = {
       grassEl.setAttribute('scale', '0 0 0');
       grassEl.setAttribute(
         'animation',
-        'property: scale; to: 1 1 1; dur: 1000; easing: easeOutElastic; delay: 50;'
+        'property: scale; to: 1 1 1; dur: 750; easing: easeOutElastic;'
       );
       pop01SoundAsset.currentTime = 0;
       pop01SoundAsset.play();
@@ -268,11 +268,11 @@ const tapBusinessCardComponent = {
         signModelEl.setAttribute('scale', '0 0 0');
         signModelEl.setAttribute(
           'animation',
-          'property: scale; to: 0.01 0.01 0.01; dur: 1000; easing: easeOutElastic;'
+          'property: scale; to: 0.01 0.01 0.01; dur: 750; easing: easeOutElastic;'
         );
         pop02SoundAsset.currentTime = 0;
         pop02SoundAsset.play();
-      }, 500);
+      }, 375);
     }
 
     function showVideoElement() {
@@ -282,11 +282,11 @@ const tapBusinessCardComponent = {
         videoEl.setAttribute('scale', '0 0 0');
         videoEl.setAttribute(
           'animation',
-          'property: scale; to: 1 1 1; dur: 1000; easing: easeOutElastic;'
+          'property: scale; to: 1 1 1; dur: 750; easing: easeOutElastic;'
         );
         pop03SoundAsset.currentTime = 0;
         pop03SoundAsset.play();
-      }, 1000);
+      }, 750);
     }
 
     function playVideo() {
@@ -315,15 +315,15 @@ const tapBusinessCardComponent = {
     function finishExperience() {
       signModelEl.setAttribute(
         'animation',
-        'property: scale; to: 0 0 0; dur: 1000; easing: easeInQuint; delay: 0'
+        'property: scale; to: 0 0 0; dur: 500; easing: easeInQuint; delay: 0'
       );
       grassEl.setAttribute(
         'animation',
-        'property: scale; to: 0 0 0; dur: 1000; easing: easeInQuint; delay: 0'
+        'property: scale; to: 0 0 0; dur: 500; easing: easeInQuint; delay: 0'
       );
       videoEl.setAttribute(
         'animation',
-        'property: scale; to: 0 0 0; dur: 1000; easing: easeInQuint; delay: 0'
+        'property: scale; to: 0 0 0; dur: 500; easing: easeInQuint; delay: 0'
       );
 
       whoosh01SoundAsset.currentTime = 0;
@@ -336,7 +336,7 @@ const tapBusinessCardComponent = {
         signModelEl.object3D.visible = false;
         signTexEl.object3D.visible = false;
         grassEl.object3D.visible = false;
-      }, 1000);
+      }, 500);
     }
   },
   tick: function () {
