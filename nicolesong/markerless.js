@@ -252,10 +252,9 @@ const tapBusinessCardComponent = {
           isExperiencePlaying = true;
           hideLoadingElement();
           showCarpetElement();
-          showSignElement();
+          showVideoElement();
           setTimeout(function () {
             playVideo();
-            showVideoElement();
           }, 400);
         }
       }
