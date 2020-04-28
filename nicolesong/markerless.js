@@ -8,6 +8,7 @@ const xrScene = `
   <a-assets>
     <audio id="pop-01-sound-asset" src="assets/pop-01-sound.mp3" preload="auto"></audio>
     <img id="loading-texture-asset" src="assets/loading-texture.png">
+    <img id="carpet-texture-asset" src="assets/carpet-texture.png">
     <video id="talk-video-asset" muted autoplay playsinline crossorigin="anonymous" src="assets/talk-video.mp4"></video>
   </a-assets>
   <a-camera id="camera-entity" position="0 0 0" raycaster="objects: .cantap" cursor="fuse: false; rayOrigin: mouse;"></a-camera>
@@ -99,20 +100,23 @@ const tapBusinessCardComponent = {
       finishExperience();
     };
 
-    const pop01SoundAsset = document.getElementById('pop-01-sound-asset');
-
     //Assets
     const loadingTexAsset = document.getElementById('loading-texture-asset');
+    const grassTexAsset = document.getElementById('carpet-texture-asset');
+
+    const pop01SoundAsset = document.getElementById('pop-01-sound-asset');
 
     //Elements
     const parentEl = document.createElement('a-entity');
     const videoEl = document.createElement('a-plane');
     const loadingEl = document.createElement('a-plane');
+    const carpetEl = document.createElement('a-plane');
 
     //Initialize Elements
     createParentElement();
     createVideoElement();
     createLoadingElement();
+    createCarpetElement();
 
     function createParentElement() {
       parentEl.setAttribute('id', 'parent-entity');
@@ -130,7 +134,7 @@ const tapBusinessCardComponent = {
       });
 
       const width = 1.5;
-      const height = (960 / 540) * width;
+      const height = (720 / 404) * width;
       videoEl.setAttribute('width', width);
       videoEl.setAttribute('height', height);
       videoEl.object3D.translateY(height / 2);
@@ -150,6 +154,14 @@ const tapBusinessCardComponent = {
       parentEl.appendChild(loadingEl);
     }
 
+    function createCarpetElement() {
+      grassEl.object3D.visible = false;
+      g;
+      grassEl.setAttribute('rotation', '-90 0 0');
+      grassEl.setAttribute('material', 'src', grassTexAsset);
+      parentEl.appendChild(grassEl);
+    }
+
     const ground = document.getElementById('ground');
     ground.addEventListener('click', (event) => {
       if (!hasUserTapped) {
@@ -165,13 +177,23 @@ const tapBusinessCardComponent = {
         pop01SoundAsset.play();
         pop01SoundAsset.pause();
 
+        pop02SoundAsset.play();
+        pop02SoundAsset.pause();
+
+        whoosh01SoundAsset.play();
+        whoosh01SoundAsset.pause();
+
         if (!hasVideoLoaded) {
           showLoadingElement();
         } else {
           if (!isExperiencePlaying) {
             isExperiencePlaying = true;
-            playVideo();
-            showVideoElement();
+            showGrassElement();
+            showSignElement();
+            setTimeout(function () {
+              playVideo();
+              showVideoElement();
+            }, 1000);
           }
         }
       }
@@ -194,14 +216,33 @@ const tapBusinessCardComponent = {
       setTimeout(function () {
         videoEl.object3D.visible = true;
         videoAsset.muted = false;
-        videoEl.setAttribute('scale', '0 0 0');
-        videoEl.setAttribute(
-          'animation',
-          'property: scale; to: 1 1 1; dur: 1000; easing: easeOutElastic;'
-        );
-        pop01SoundAsset.currentTime = 0;
-        pop01SoundAsset.play();
-      }, 600);
+      }, 100);
+    }
+
+    function showGrassElement() {
+      grassEl.object3D.visible = true;
+      grassEl.setAttribute('scale', '0 0 0');
+      grassEl.setAttribute(
+        'animation',
+        'property: scale; to: 1 1 1; dur: 1000; easing: easeOutElastic; delay: 50;'
+      );
+      pop01SoundAsset.currentTime = 0;
+      pop01SoundAsset.play();
+    }
+
+    function showSignElement() {
+      signModelEl.object3D.visible = true;
+      signTexEl.object3D.visible = true;
+      signModelEl.setAttribute('scale', '0 0 0');
+      signModelEl.setAttribute(
+        'animation',
+        'property: scale; to: 0.01 0.01 0.01; dur: 1500; easing: easeOutElastic; delay: 500;'
+      );
+
+      setTimeout(function () {
+        pop02SoundAsset.currentTime = 0;
+        pop02SoundAsset.play();
+      }, 500);
     }
 
     function playVideo() {
@@ -217,16 +258,37 @@ const tapBusinessCardComponent = {
         if (!isExperiencePlaying) {
           isExperiencePlaying = true;
           hideLoadingElement();
-          playVideo();
-          showVideoElement();
+          showGrassElement();
+          showSignElement();
+          setTimeout(function () {
+            playVideo();
+            showVideoElement();
+          }, 1000);
         }
       }
     }
 
     function finishExperience() {
-      hasUserTapped = false;
-      isExperiencePlaying = false;
-      videoEl.object3D.visible = false;
+      signModelEl.setAttribute(
+        'animation',
+        'property: scale; to: 0 0 0; dur: 1000; easing: easeInElastic; delay: 0'
+      );
+      grassEl.setAttribute(
+        'animation',
+        'property: scale; to: 0 0 0; dur: 1000; easing: easeInElastic; delay: 0'
+      );
+
+      whoosh01SoundAsset.currentTime = 0;
+      whoosh01SoundAsset.play();
+
+      setTimeout(function () {
+        hasUserTapped = false;
+        isExperiencePlaying = false;
+        videoEl.object3D.visible = false;
+        signModelEl.object3D.visible = false;
+        signTexEl.object3D.visible = false;
+        grassEl.object3D.visible = false;
+      }, 1000);
     }
   },
   tick: function () {
