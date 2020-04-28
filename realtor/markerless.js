@@ -228,10 +228,10 @@ const tapBusinessCardComponent = {
             isExperiencePlaying = true;
             showGrassElement();
             showSignElement();
+            showVideoElement();
             setTimeout(function () {
               playVideo();
-              showVideoElement();
-            }, 750);
+            }, 650);
           }
         }
       }
