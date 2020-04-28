@@ -138,7 +138,7 @@ const tapBusinessCardComponent = {
 
     function createVideoElement() {
       videoEl.object3D.visible = false;
-      videoEl.object3D.translateZ(0.35);
+      videoEl.object3D.translateZ(0.5);
       videoEl.setAttribute('material', 'src', videoAsset);
       videoEl.setAttribute('material', {
         shader: 'chromakey',
@@ -159,7 +159,7 @@ const tapBusinessCardComponent = {
       loadingEl.object3D.visible = false;
       loadingEl.setAttribute('material', 'src', loadingTexAsset);
       loadingEl.setAttribute('material', 'transparent', true);
-      loadingEl.object3D.translateY(0.75);
+      loadingEl.object3D.translateY(0.5);
       loadingEl.setAttribute(
         'animation',
         'property: rotation; to: 0 0 -360; dur: 1000; loop: true; easing: linear'
