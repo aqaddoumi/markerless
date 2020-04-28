@@ -191,11 +191,10 @@ const tapBusinessCardComponent = {
           if (!isExperiencePlaying) {
             isExperiencePlaying = true;
             showCarpetElement();
-            showSignElement();
             showVideoElement();
             setTimeout(function () {
               playVideo();
-            }, 1000);
+            }, 400);
           }
         }
       }
@@ -214,34 +213,26 @@ const tapBusinessCardComponent = {
       loadingEl.object3D.visible = false;
     }
 
-    function showVideoElement() {
-      setTimeout(function () {
-        videoEl.object3D.visible = true;
-        videoAsset.muted = false;
-      }, 100);
-    }
-
     function showCarpetElement() {
       carpetEl.object3D.visible = true;
       carpetEl.setAttribute('scale', '0 0 0');
       carpetEl.setAttribute(
         'animation',
-        'property: scale; to: 1 1 1; dur: 1000; easing: easeOutElastic; delay: 50;'
+        'property: scale; to: 1 1 1; dur: 750; easing: easeOutElastic; delay: 50;'
       );
       pop01SoundAsset.currentTime = 0;
       pop01SoundAsset.play();
     }
 
-    function showSignElement() {
-      signModelEl.object3D.visible = true;
-      signTexEl.object3D.visible = true;
-      signModelEl.setAttribute('scale', '0 0 0');
-      signModelEl.setAttribute(
-        'animation',
-        'property: scale; to: 0.01 0.01 0.01; dur: 1500; easing: easeOutElastic; delay: 500;'
-      );
-
+    function showVideoElement() {
       setTimeout(function () {
+        videoEl.object3D.visible = true;
+        videoAsset.muted = false;
+        videoEl.setAttribute('scale', '0 0 0');
+        videoEl.setAttribute(
+          'animation',
+          'property: scale; to: 1 1 1; dur: 750; easing: easeOutElastic;'
+        );
         pop02SoundAsset.currentTime = 0;
         pop02SoundAsset.play();
       }, 500);
@@ -265,16 +256,12 @@ const tapBusinessCardComponent = {
           setTimeout(function () {
             playVideo();
             showVideoElement();
-          }, 1000);
+          }, 400);
         }
       }
     }
 
     function finishExperience() {
-      signModelEl.setAttribute(
-        'animation',
-        'property: scale; to: 0 0 0; dur: 1000; easing: easeInElastic; delay: 0'
-      );
       carpetEl.setAttribute(
         'animation',
         'property: scale; to: 0 0 0; dur: 1000; easing: easeInElastic; delay: 0'
@@ -287,8 +274,6 @@ const tapBusinessCardComponent = {
         hasUserTapped = false;
         isExperiencePlaying = false;
         videoEl.object3D.visible = false;
-        signModelEl.object3D.visible = false;
-        signTexEl.object3D.visible = false;
         carpetEl.object3D.visible = false;
       }, 1000);
     }
