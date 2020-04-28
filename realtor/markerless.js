@@ -284,7 +284,9 @@ const tapBusinessCardComponent = {
           'animation',
           'property: scale; to: 1 1 1; dur: 750; easing: easeOutElastic;'
         );
-      }, 850);
+        pop03SoundAsset.currentTime = 0;
+        pop03SoundAsset.play();
+      }, 750);
     }
 
     function playVideo() {
@@ -305,9 +307,7 @@ const tapBusinessCardComponent = {
           showVideoElement();
           setTimeout(function () {
             playVideo();
-            pop03SoundAsset.currentTime = 0;
-            pop03SoundAsset.play();
-          }, 750);
+          }, 650);
         }
       }
     }
