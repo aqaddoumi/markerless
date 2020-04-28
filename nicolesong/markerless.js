@@ -158,7 +158,7 @@ const tapBusinessCardComponent = {
 
     function createCarpetElement() {
       carpetEl.object3D.visible = false;
-      carpetEl.setAttribute('scale', '5 6.7 1');
+      carpetEl.setAttribute('scale', '3 4 1');
       carpetEl.setAttribute('rotation', '-90 0 0');
       carpetEl.setAttribute('material', 'src', carpetTexAsset);
       carpetEl.setAttribute('material', 'transparent', true);
@@ -219,7 +219,7 @@ const tapBusinessCardComponent = {
       carpetEl.setAttribute('scale', '0 0 0');
       carpetEl.setAttribute(
         'animation',
-        'property: scale; to: 5 6.7 1; dur: 750; easing: easeOutElastic; delay: 50;'
+        'property: scale; to: 3 4 1; dur: 750; easing: easeOutElastic; delay: 50;'
       );
       pop01SoundAsset.currentTime = 0;
       pop01SoundAsset.play();
