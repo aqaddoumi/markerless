@@ -7,6 +7,7 @@ const xrScene = `
 <a-scene tap-business-card="videoAsset: #talk-video-asset" xrweb xrextras-almost-there xrextras-loading xrextras-runtime-error>
   <a-assets>
     <audio id="pop-01-sound-asset" src="assets/pop-01-sound.mp3" preload="auto"></audio>
+    <audio id="pop-02-sound-asset" src="assets/pop-02-sound.mp3" preload="auto"></audio>
     <img id="loading-texture-asset" src="assets/loading-texture.png">
     <img id="carpet-texture-asset" src="assets/carpet-texture.png">
     <video id="talk-video-asset" muted autoplay playsinline crossorigin="anonymous" src="assets/talk-video.mp4"></video>
@@ -102,9 +103,10 @@ const tapBusinessCardComponent = {
 
     //Assets
     const loadingTexAsset = document.getElementById('loading-texture-asset');
-    const grassTexAsset = document.getElementById('carpet-texture-asset');
+    const carpetTexAsset = document.getElementById('carpet-texture-asset');
 
     const pop01SoundAsset = document.getElementById('pop-01-sound-asset');
+    const pop02SoundAsset = document.getElementById('pop-02-sound-asset');
 
     //Elements
     const parentEl = document.createElement('a-entity');
@@ -134,7 +136,7 @@ const tapBusinessCardComponent = {
       });
 
       const width = 1.5;
-      const height = (720 / 404) * width;
+      const height = (960 / 540) * width;
       videoEl.setAttribute('width', width);
       videoEl.setAttribute('height', height);
       videoEl.object3D.translateY(height / 2);
@@ -158,8 +160,8 @@ const tapBusinessCardComponent = {
       carpetEl.object3D.visible = false;
       carpetEl.setAttribute('scale', '1 1.34 1');
       carpetEl.setAttribute('rotation', '-90 0 0');
-      grassEl.setAttribute('material', 'src', grassTexAsset);
-      parentEl.appendChild(grassEl);
+      carpetEl.setAttribute('material', 'src', carpetTexAsset);
+      parentEl.appendChild(carpetEl);
     }
 
     const ground = document.getElementById('ground');
@@ -188,11 +190,11 @@ const tapBusinessCardComponent = {
         } else {
           if (!isExperiencePlaying) {
             isExperiencePlaying = true;
-            showGrassElement();
+            showCarpetElement();
             showSignElement();
+            showVideoElement();
             setTimeout(function () {
               playVideo();
-              showVideoElement();
             }, 1000);
           }
         }
@@ -219,10 +221,10 @@ const tapBusinessCardComponent = {
       }, 100);
     }
 
-    function showGrassElement() {
-      grassEl.object3D.visible = true;
-      grassEl.setAttribute('scale', '0 0 0');
-      grassEl.setAttribute(
+    function showCarpetElement() {
+      carpetEl.object3D.visible = true;
+      carpetEl.setAttribute('scale', '0 0 0');
+      carpetEl.setAttribute(
         'animation',
         'property: scale; to: 1 1 1; dur: 1000; easing: easeOutElastic; delay: 50;'
       );
@@ -258,7 +260,7 @@ const tapBusinessCardComponent = {
         if (!isExperiencePlaying) {
           isExperiencePlaying = true;
           hideLoadingElement();
-          showGrassElement();
+          showCarpetElement();
           showSignElement();
           setTimeout(function () {
             playVideo();
@@ -273,7 +275,7 @@ const tapBusinessCardComponent = {
         'animation',
         'property: scale; to: 0 0 0; dur: 1000; easing: easeInElastic; delay: 0'
       );
-      grassEl.setAttribute(
+      carpetEl.setAttribute(
         'animation',
         'property: scale; to: 0 0 0; dur: 1000; easing: easeInElastic; delay: 0'
       );
@@ -287,7 +289,7 @@ const tapBusinessCardComponent = {
         videoEl.object3D.visible = false;
         signModelEl.object3D.visible = false;
         signTexEl.object3D.visible = false;
-        grassEl.object3D.visible = false;
+        carpetEl.object3D.visible = false;
       }, 1000);
     }
   },
