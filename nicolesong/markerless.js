@@ -4,7 +4,7 @@ const xrScene = `
     <h1 id="interface-text">Tap anywhere to see the experience</h1>
   </div>
 </div>
-<a-scene tap-business-card="videoAsset: #talk-video-asset" xrweb xrextras-almost-there xrextras-loading xrextras-runtime-error>
+<a-scene tap-business-card="videoAsset: #talk-video-asset" xrweb xrextras-almost-there xrextras-loading xrextras-runtime-error xrextras-log-to-screen>
   <a-assets>
     <audio id="pop-01-sound-asset" src="assets/pop-01-sound.mp3" preload="auto"></audio>
     <audio id="pop-02-sound-asset" src="assets/pop-02-sound.mp3" preload="auto"></audio>
@@ -160,7 +160,7 @@ const tapBusinessCardComponent = {
       carpetEl.object3D.visible = false;
       carpetEl.setAttribute('scale', '3 4 1');
       carpetEl.setAttribute('position', '0 0.1 0');
-      carpetEl.setAttribute('rotation', '-90 0 0');
+      carpetEl.setAttribute('rotation', '-90 90 0');
       carpetEl.setAttribute('material', 'src', carpetTexAsset);
       carpetEl.setAttribute('material', 'transparent', true);
       parentEl.appendChild(carpetEl);
