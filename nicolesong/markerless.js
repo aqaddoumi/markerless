@@ -118,9 +118,9 @@ const tapBusinessCardComponent = {
 
     //Initialize Elements
     createParentElement();
-    createVideoElement();
     createLoadingElement();
     createCarpetElement();
+    createVideoElement();
 
     function createParentElement() {
       parentEl.setAttribute('id', 'parent-entity');
@@ -220,7 +220,7 @@ const tapBusinessCardComponent = {
       carpetEl.setAttribute('scale', '0 0 0');
       carpetEl.setAttribute(
         'animation',
-        'property: scale; to: 1 1 1; dur: 750; easing: easeOutElastic;'
+        'property: scale; to: 3 4 1; dur: 750; easing: easeOutElastic;'
       );
       pop01SoundAsset.currentTime = 0;
       pop01SoundAsset.play();
