@@ -116,9 +116,9 @@ const tapBusinessCardComponent = {
 
     //Initialize Elements
     createParentElement();
-    createVideoElement();
     createLoadingElement();
     createCarpetElement();
+    createVideoElement();
 
     function createParentElement() {
       parentEl.setAttribute('id', 'parent-entity');
