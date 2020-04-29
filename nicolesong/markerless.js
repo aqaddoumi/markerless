@@ -162,7 +162,7 @@ const tapBusinessCardComponent = {
       carpetEl.object3D.visible = false;
       carpetEl.setAttribute('rotation', '-90 0 0');
       carpetEl.setAttribute('material', 'src', carpetTexAsset);
-      carpetEl.setAttribute('material', 'transparent', true);
+      //carpetEl.setAttribute('material', 'transparent', true);
       parentEl.appendChild(carpetEl);
     }
 
