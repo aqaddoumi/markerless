@@ -151,6 +151,7 @@ const tapBusinessCardComponent = {
       loadingEl.setAttribute('material', 'src', loadingTexAsset);
       loadingEl.setAttribute('material', 'transparent', true);
       loadingEl.object3D.translateY(0.5);
+      loadingEl.object3D.translateX(-0.3);
       loadingEl.setAttribute(
         'animation',
         'property: rotation; to: 0 0 -360; dur: 1000; loop: true; easing: linear'
