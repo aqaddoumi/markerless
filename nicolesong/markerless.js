@@ -10,7 +10,7 @@ const xrScene = `
     <audio id="pop-02-sound-asset" src="assets/pop-02-sound.mp3" preload="auto"></audio>
     <audio id="whoosh-01-sound-asset" src="assets/whoosh-01-sound.mp3" preload="auto"></audio>
     <img id="loading-texture-asset" src="assets/loading-texture.png">
-    <img id="grass-texture-asset" src="assets/grass-texture.png">
+    <img id="carpet-texture-asset" src="assets/carpet-texture.png">
     <video id="talk-video-asset" muted autoplay playsinline crossorigin="anonymous" src="assets/talk-video.mp4"></video>
   </a-assets>
   <a-camera id="camera-entity" position="0 0 0" raycaster="objects: .cantap" cursor="fuse: false; rayOrigin: mouse;"></a-camera>
@@ -104,8 +104,7 @@ const tapBusinessCardComponent = {
 
     //Assets
     const loadingTexAsset = document.getElementById('loading-texture-asset');
-    const grassTexAsset = document.getElementById('grass-texture-asset');
-    const forSaleTexAsset = document.getElementById('for-sale-texture-asset');
+    const carpetTexAsset = document.getElementById('carpet-texture-asset');
 
     const pop01SoundAsset = document.getElementById('pop-01-sound-asset');
     const pop02SoundAsset = document.getElementById('pop-02-sound-asset');
@@ -113,15 +112,15 @@ const tapBusinessCardComponent = {
 
     //Elements
     const parentEl = document.createElement('a-entity');
-    const videoEl = document.createElement('a-plane');
     const loadingEl = document.createElement('a-plane');
-    const grassEl = document.createElement('a-circle');
+    const carpetEl = document.createElement('a-plane');
+    const videoEl = document.createElement('a-plane');
 
     //Initialize Elements
     createParentElement();
     createVideoElement();
     createLoadingElement();
-    createGrassElement();
+    createCarpetElement();
 
     function createParentElement() {
       parentEl.setAttribute('id', 'parent-entity');
@@ -159,11 +158,12 @@ const tapBusinessCardComponent = {
       parentEl.appendChild(loadingEl);
     }
 
-    function createGrassElement() {
-      grassEl.object3D.visible = false;
-      grassEl.setAttribute('rotation', '-90 0 0');
-      grassEl.setAttribute('material', 'src', grassTexAsset);
-      parentEl.appendChild(grassEl);
+    function createCarpetElement() {
+      carpetEl.object3D.visible = false;
+      carpetEl.setAttribute('rotation', '-90 0 0');
+      carpetEl.setAttribute('material', 'src', carpetTexAsset);
+      carpetEl.setAttribute('material', 'transparent', true);
+      parentEl.appendChild(carpetEl);
     }
 
     const ground = document.getElementById('ground');
@@ -192,7 +192,7 @@ const tapBusinessCardComponent = {
         } else {
           if (!isExperiencePlaying) {
             isExperiencePlaying = true;
-            showGrassElement();
+            showCarpetElement();
             showVideoElement();
             setTimeout(function () {
               playVideo();
@@ -215,10 +215,10 @@ const tapBusinessCardComponent = {
       loadingEl.object3D.visible = false;
     }
 
-    function showGrassElement() {
-      grassEl.object3D.visible = true;
-      grassEl.setAttribute('scale', '0 0 0');
-      grassEl.setAttribute(
+    function showCarpetElement() {
+      carpetEl.object3D.visible = true;
+      carpetEl.setAttribute('scale', '0 0 0');
+      carpetEl.setAttribute(
         'animation',
         'property: scale; to: 1 1 1; dur: 750; easing: easeOutElastic;'
       );
@@ -251,7 +251,7 @@ const tapBusinessCardComponent = {
         if (!isExperiencePlaying) {
           isExperiencePlaying = true;
           hideLoadingElement();
-          showGrassElement();
+          showCarpetElement();
           showVideoElement();
           setTimeout(function () {
             playVideo();
@@ -261,7 +261,7 @@ const tapBusinessCardComponent = {
     }
 
     function finishExperience() {
-      grassEl.setAttribute(
+      carpetEl.setAttribute(
         'animation',
         'property: scale; to: 0 0 0; dur: 500; easing: easeInQuint; delay: 0'
       );
@@ -277,7 +277,7 @@ const tapBusinessCardComponent = {
         hasUserTapped = false;
         isExperiencePlaying = false;
         videoEl.object3D.visible = false;
-        grassEl.object3D.visible = false;
+        carpetEl.object3D.visible = false;
       }, 500);
     }
   },
