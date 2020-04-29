@@ -142,7 +142,8 @@ const tapBusinessCardComponent = {
       videoEl.setAttribute('width', width);
       videoEl.setAttribute('height', height);
       videoEl.object3D.translateY(height / 2);
-      videoEl.object3D.translateX(-0.3);
+      videoEl.object3D.translateX(-0.2);
+      videoEl.object3D.translateZ(0.2);
 
       parentEl.appendChild(videoEl);
     }
