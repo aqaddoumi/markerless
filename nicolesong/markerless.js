@@ -4,7 +4,7 @@ const xrScene = `
     <h1 id="interface-text">Tap anywhere to see the experience</h1>
   </div>
 </div>
-<a-scene tap-business-card="videoAsset: #talk-video-asset" xrweb xrextras-almost-there xrextras-loading xrextras-runtime-error>
+<a-scene tap-business-card="videoAsset: #talk-video-asset" xrweb xrextras-almost-there xrextras-loading xrextras-runtime-error xrextras-log-to-screen>
   <a-assets>
     <audio id="pop-01-sound-asset" src="assets/pop-01-sound.mp3" preload="auto"></audio>
     <audio id="pop-02-sound-asset" src="assets/pop-02-sound.mp3" preload="auto"></audio>
@@ -145,6 +145,7 @@ const tapBusinessCardComponent = {
     }
 
     function createLoadingElement() {
+      console.log('create loading');
       loadingEl.object3D.visible = false;
       loadingEl.setAttribute('material', 'src', loadingTexAsset);
       loadingEl.setAttribute('material', 'transparent', true);
@@ -167,7 +168,9 @@ const tapBusinessCardComponent = {
 
     const ground = document.getElementById('ground');
     ground.addEventListener('click', (event) => {
+      console.log('Touch1');
       if (!hasUserTapped) {
+        console.log('Touch2');
         const touchPoint = event.detail.intersection.point;
         parentEl.setAttribute('position', touchPoint);
 
@@ -190,6 +193,7 @@ const tapBusinessCardComponent = {
           showLoadingElement();
         } else {
           if (!isExperiencePlaying) {
+            console.log('Touch3');
             isExperiencePlaying = true;
             showCarpetElement();
             showVideoElement();
@@ -207,6 +211,7 @@ const tapBusinessCardComponent = {
     }
 
     function showLoadingElement() {
+      console.log('Show Loading');
       loadingEl.object3D.visible = true;
     }
 
