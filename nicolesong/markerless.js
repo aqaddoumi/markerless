@@ -8,9 +8,12 @@ const xrScene = `
   <a-assets>
     <audio id="pop-01-sound-asset" src="assets/pop-01-sound.mp3" preload="auto"></audio>
     <audio id="pop-02-sound-asset" src="assets/pop-02-sound.mp3" preload="auto"></audio>
+    <audio id="pop-03-sound-asset" src="assets/pop-03-sound.mp3" preload="auto"></audio>
     <audio id="whoosh-01-sound-asset" src="assets/whoosh-01-sound.mp3" preload="auto"></audio>
     <img id="loading-texture-asset" src="assets/loading-texture.png">
-    <img id="carpet-texture-asset" src="assets/carpet-texture.png">
+    <img id="grass-texture-asset" src="assets/grass-texture.png">
+    <img id="for-sale-texture-asset" src="assets/for-sale-texture.png">
+    <a-asset-item id="for-sale-model-asset" src="assets/for-sale-model.glb"></a-asset-item>
     <video id="talk-video-asset" muted autoplay playsinline crossorigin="anonymous" src="assets/talk-video.mp4"></video>
   </a-assets>
   <a-camera id="camera-entity" position="0 0 0" raycaster="objects: .cantap" cursor="fuse: false; rayOrigin: mouse;"></a-camera>
@@ -105,22 +108,28 @@ const tapBusinessCardComponent = {
     //Assets
     const loadingTexAsset = document.getElementById('loading-texture-asset');
     const grassTexAsset = document.getElementById('grass-texture-asset');
+    const forSaleTexAsset = document.getElementById('for-sale-texture-asset');
 
     const pop01SoundAsset = document.getElementById('pop-01-sound-asset');
     const pop02SoundAsset = document.getElementById('pop-02-sound-asset');
+    const pop03SoundAsset = document.getElementById('pop-03-sound-asset');
     const whoosh01SoundAsset = document.getElementById('whoosh-01-sound-asset');
 
     //Elements
     const parentEl = document.createElement('a-entity');
-    const loadingEl = document.createElement('a-plane');
-    const grassEl = document.createElement('a-plane');
     const videoEl = document.createElement('a-plane');
+    const loadingEl = document.createElement('a-plane');
+    const grassEl = document.createElement('a-circle');
+    const signEl = document.createElement('a-entity');
+    const signModelEl = document.createElement('a-entity');
+    const signTexEl = document.createElement('a-plane');
 
     //Initialize Elements
     createParentElement();
+    createVideoElement();
     createLoadingElement();
     createGrassElement();
-    createVideoElement();
+    createSignElement();
 
     function createParentElement() {
       parentEl.setAttribute('id', 'parent-entity');
@@ -165,6 +174,29 @@ const tapBusinessCardComponent = {
       parentEl.appendChild(grassEl);
     }
 
+    function createSignElement() {
+      parentEl.appendChild(signEl);
+      createSignModel();
+      createSignImage();
+    }
+
+    function createSignModel() {
+      signModelEl.object3D.visible = false;
+      signModelEl.setAttribute('gltf-model', '#for-sale-model-asset');
+      signModelEl.setAttribute('position', '0.5 0 -0.5');
+      signModelEl.setAttribute('rotation', '0 60 0');
+      signEl.appendChild(signModelEl);
+    }
+
+    function createSignImage() {
+      signTexEl.object3D.visible = false;
+      signTexEl.setAttribute('material', 'src', forSaleTexAsset);
+      signTexEl.setAttribute('scale', '90 70 1');
+      signTexEl.setAttribute('position', '0 125 65');
+      signTexEl.setAttribute('rotation', '0 -90 0');
+      signModelEl.appendChild(signTexEl);
+    }
+
     const ground = document.getElementById('ground');
     ground.addEventListener('click', (event) => {
       if (!hasUserTapped) {
@@ -183,6 +215,9 @@ const tapBusinessCardComponent = {
         pop02SoundAsset.play();
         pop02SoundAsset.pause();
 
+        pop03SoundAsset.play();
+        pop03SoundAsset.pause();
+
         whoosh01SoundAsset.play();
         whoosh01SoundAsset.pause();
 
@@ -192,6 +227,7 @@ const tapBusinessCardComponent = {
           if (!isExperiencePlaying) {
             isExperiencePlaying = true;
             showGrassElement();
+            showSignElement();
             showVideoElement();
             setTimeout(function () {
               playVideo();
@@ -225,6 +261,20 @@ const tapBusinessCardComponent = {
       pop01SoundAsset.play();
     }
 
+    function showSignElement() {
+      setTimeout(function () {
+        signModelEl.object3D.visible = true;
+        signTexEl.object3D.visible = true;
+        signModelEl.setAttribute('scale', '0 0 0');
+        signModelEl.setAttribute(
+          'animation',
+          'property: scale; to: 0.01 0.01 0.01; dur: 750; easing: easeOutElastic;'
+        );
+        pop02SoundAsset.currentTime = 0;
+        pop02SoundAsset.play();
+      }, 375);
+    }
+
     function showVideoElement() {
       setTimeout(function () {
         videoEl.object3D.visible = true;
@@ -253,6 +303,7 @@ const tapBusinessCardComponent = {
           isExperiencePlaying = true;
           hideLoadingElement();
           showGrassElement();
+          showSignElement();
           showVideoElement();
           setTimeout(function () {
             playVideo();
@@ -262,6 +313,10 @@ const tapBusinessCardComponent = {
     }
 
     function finishExperience() {
+      signModelEl.setAttribute(
+        'animation',
+        'property: scale; to: 0 0 0; dur: 500; easing: easeInQuint; delay: 0'
+      );
       grassEl.setAttribute(
         'animation',
         'property: scale; to: 0 0 0; dur: 500; easing: easeInQuint; delay: 0'
@@ -278,6 +333,8 @@ const tapBusinessCardComponent = {
         hasUserTapped = false;
         isExperiencePlaying = false;
         videoEl.object3D.visible = false;
+        signModelEl.object3D.visible = false;
+        signTexEl.object3D.visible = false;
         grassEl.object3D.visible = false;
       }, 500);
     }
