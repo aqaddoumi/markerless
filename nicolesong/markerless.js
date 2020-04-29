@@ -238,7 +238,7 @@ const tapBusinessCardComponent = {
           'animation',
           'property: scale; to: 0 0 0; dur: 500; easing: easeInQuint; delay: 0'
         );
-      }, 108000);
+      }, 109000);
     }
 
     function showVideoElement() {
