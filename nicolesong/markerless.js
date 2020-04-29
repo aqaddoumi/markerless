@@ -137,12 +137,12 @@ const tapBusinessCardComponent = {
         color: '0.1 0.9 0.2',
       });
 
-      const width = 1.5;
+      const width = 2;
       const height = (960 / 540) * width;
       videoEl.setAttribute('width', width);
       videoEl.setAttribute('height', height);
       videoEl.object3D.translateY(height / 2);
-      videoEl.object3D.translateX(-1);
+      videoEl.object3D.translateX(0.3);
 
       parentEl.appendChild(videoEl);
     }
