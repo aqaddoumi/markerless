@@ -142,6 +142,7 @@ const tapBusinessCardComponent = {
       videoEl.setAttribute('width', width);
       videoEl.setAttribute('height', height);
       videoEl.object3D.translateY(height / 2);
+      videoEl.object3D.translateX(-1);
 
       parentEl.appendChild(videoEl);
     }
@@ -151,7 +152,6 @@ const tapBusinessCardComponent = {
       loadingEl.setAttribute('material', 'src', loadingTexAsset);
       loadingEl.setAttribute('material', 'transparent', true);
       loadingEl.object3D.translateY(0.5);
-      loadingEl.object3D.translateX(-0.3);
       loadingEl.setAttribute(
         'animation',
         'property: rotation; to: 0 0 -360; dur: 1000; loop: true; easing: linear'
@@ -195,6 +195,7 @@ const tapBusinessCardComponent = {
           if (!isExperiencePlaying) {
             isExperiencePlaying = true;
             showCarpetElement();
+            hideCarpetElement();
             showVideoElement();
             setTimeout(function () {
               playVideo();
@@ -222,10 +223,21 @@ const tapBusinessCardComponent = {
       carpetEl.setAttribute('scale', '0 0 0');
       carpetEl.setAttribute(
         'animation',
-        'property: scale; to: 3 4 1; dur: 750; easing: easeOutElastic;'
+        'property: scale; to: 2.4 3.2 1; dur: 750; easing: easeOutElastic;'
       );
       pop01SoundAsset.currentTime = 0;
       pop01SoundAsset.play();
+    }
+
+    function hideCarpetElement() {
+      setTimeout(function () {
+        whoosh01SoundAsset.currentTime = 0;
+        whoosh01SoundAsset.play();
+        carpetEl.setAttribute(
+          'animation',
+          'property: scale; to: 0 0 0; dur: 500; easing: easeInQuint; delay: 0'
+        );
+      }, 108000);
     }
 
     function showVideoElement() {
@@ -254,6 +266,7 @@ const tapBusinessCardComponent = {
           isExperiencePlaying = true;
           hideLoadingElement();
           showCarpetElement();
+          hideCarpetElement();
           showVideoElement();
           setTimeout(function () {
             playVideo();
@@ -263,17 +276,10 @@ const tapBusinessCardComponent = {
     }
 
     function finishExperience() {
-      carpetEl.setAttribute(
-        'animation',
-        'property: scale; to: 0 0 0; dur: 500; easing: easeInQuint; delay: 0'
-      );
       videoEl.setAttribute(
         'animation',
         'property: scale; to: 0 0 0; dur: 500; easing: easeInQuint; delay: 0'
       );
-
-      whoosh01SoundAsset.currentTime = 0;
-      whoosh01SoundAsset.play();
 
       setTimeout(function () {
         hasUserTapped = false;
