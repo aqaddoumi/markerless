@@ -4,10 +4,11 @@ const xrScene = `
     <h1 id="interface-text">Tap anywhere to see the experience</h1>
   </div>
 </div>
-<a-scene tap-business-card="videoAsset: #talk-video-asset" xrweb xrextras-almost-there xrextras-loading xrextras-runtime-error xrextras-log-to-screen>
+<a-scene tap-business-card="videoAsset: #talk-video-asset" xrweb xrextras-almost-there xrextras-loading xrextras-runtime-error>
   <a-assets>
     <audio id="pop-01-sound-asset" src="assets/pop-01-sound.mp3" preload="auto"></audio>
     <audio id="pop-02-sound-asset" src="assets/pop-02-sound.mp3" preload="auto"></audio>
+    <audio id="whoosh-01-sound-asset" src="assets/whoosh-01-sound.mp3" preload="auto"></audio>
     <img id="loading-texture-asset" src="assets/loading-texture.png">
     <img id="carpet-texture-asset" src="assets/carpet-texture.png">
     <video id="talk-video-asset" muted autoplay playsinline crossorigin="anonymous" src="assets/talk-video.mp4"></video>
@@ -103,21 +104,22 @@ const tapBusinessCardComponent = {
 
     //Assets
     const loadingTexAsset = document.getElementById('loading-texture-asset');
-    const carpetTexAsset = document.getElementById('carpet-texture-asset');
+    const grassTexAsset = document.getElementById('grass-texture-asset');
 
     const pop01SoundAsset = document.getElementById('pop-01-sound-asset');
     const pop02SoundAsset = document.getElementById('pop-02-sound-asset');
+    const whoosh01SoundAsset = document.getElementById('whoosh-01-sound-asset');
 
     //Elements
     const parentEl = document.createElement('a-entity');
-    const videoEl = document.createElement('a-plane');
     const loadingEl = document.createElement('a-plane');
-    const carpetEl = document.createElement('a-plane');
+    const grassEl = document.createElement('a-plane');
+    const videoEl = document.createElement('a-plane');
 
     //Initialize Elements
     createParentElement();
     createLoadingElement();
-    createCarpetElement();
+    createGrassElement();
     createVideoElement();
 
     function createParentElement() {
@@ -127,7 +129,7 @@ const tapBusinessCardComponent = {
 
     function createVideoElement() {
       videoEl.object3D.visible = false;
-      videoEl.object3D.translateZ(0.35);
+      videoEl.object3D.translateZ(0.5);
       videoEl.setAttribute('material', 'src', videoAsset);
       videoEl.setAttribute('material', {
         shader: 'chromakey',
@@ -145,7 +147,6 @@ const tapBusinessCardComponent = {
     }
 
     function createLoadingElement() {
-      console.log('create loading');
       loadingEl.object3D.visible = false;
       loadingEl.setAttribute('material', 'src', loadingTexAsset);
       loadingEl.setAttribute('material', 'transparent', true);
@@ -157,20 +158,16 @@ const tapBusinessCardComponent = {
       parentEl.appendChild(loadingEl);
     }
 
-    function createCarpetElement() {
-      carpetEl.object3D.visible = false;
-      carpetEl.setAttribute('scale', '3 4 1');
-      carpetEl.setAttribute('position', '0 0.1 0');
-      carpetEl.setAttribute('rotation', '-90 90 0');
-      carpetEl.setAttribute('material', 'src', carpetTexAsset);
-      parentEl.appendChild(carpetEl);
+    function createGrassElement() {
+      grassEl.object3D.visible = false;
+      grassEl.setAttribute('rotation', '-90 0 0');
+      grassEl.setAttribute('material', 'src', grassTexAsset);
+      parentEl.appendChild(grassEl);
     }
 
     const ground = document.getElementById('ground');
     ground.addEventListener('click', (event) => {
-      console.log('Touch1');
       if (!hasUserTapped) {
-        console.log('Touch2');
         const touchPoint = event.detail.intersection.point;
         parentEl.setAttribute('position', touchPoint);
 
@@ -193,13 +190,12 @@ const tapBusinessCardComponent = {
           showLoadingElement();
         } else {
           if (!isExperiencePlaying) {
-            console.log('Touch3');
             isExperiencePlaying = true;
-            showCarpetElement();
+            showGrassElement();
             showVideoElement();
             setTimeout(function () {
               playVideo();
-            }, 400);
+            }, 650);
           }
         }
       }
@@ -211,7 +207,6 @@ const tapBusinessCardComponent = {
     }
 
     function showLoadingElement() {
-      console.log('Show Loading');
       loadingEl.object3D.visible = true;
     }
 
@@ -219,12 +214,12 @@ const tapBusinessCardComponent = {
       loadingEl.object3D.visible = false;
     }
 
-    function showCarpetElement() {
-      carpetEl.object3D.visible = true;
-      carpetEl.setAttribute('scale', '0 0 0');
-      carpetEl.setAttribute(
+    function showGrassElement() {
+      grassEl.object3D.visible = true;
+      grassEl.setAttribute('scale', '0 0 0');
+      grassEl.setAttribute(
         'animation',
-        'property: scale; to: 3 4 1; dur: 750; easing: easeOutElastic; delay: 50;'
+        'property: scale; to: 1 1 1; dur: 750; easing: easeOutElastic;'
       );
       pop01SoundAsset.currentTime = 0;
       pop01SoundAsset.play();
@@ -239,9 +234,9 @@ const tapBusinessCardComponent = {
           'animation',
           'property: scale; to: 1 1 1; dur: 750; easing: easeOutElastic;'
         );
-        pop02SoundAsset.currentTime = 0;
-        pop02SoundAsset.play();
-      }, 500);
+        pop03SoundAsset.currentTime = 0;
+        pop03SoundAsset.play();
+      }, 750);
     }
 
     function playVideo() {
@@ -257,19 +252,23 @@ const tapBusinessCardComponent = {
         if (!isExperiencePlaying) {
           isExperiencePlaying = true;
           hideLoadingElement();
-          showCarpetElement();
+          showGrassElement();
           showVideoElement();
           setTimeout(function () {
             playVideo();
-          }, 400);
+          }, 650);
         }
       }
     }
 
     function finishExperience() {
-      carpetEl.setAttribute(
+      grassEl.setAttribute(
         'animation',
-        'property: scale; to: 0 0 0; dur: 1000; easing: easeInElastic; delay: 0'
+        'property: scale; to: 0 0 0; dur: 500; easing: easeInQuint; delay: 0'
+      );
+      videoEl.setAttribute(
+        'animation',
+        'property: scale; to: 0 0 0; dur: 500; easing: easeInQuint; delay: 0'
       );
 
       whoosh01SoundAsset.currentTime = 0;
@@ -279,8 +278,8 @@ const tapBusinessCardComponent = {
         hasUserTapped = false;
         isExperiencePlaying = false;
         videoEl.object3D.visible = false;
-        carpetEl.object3D.visible = false;
-      }, 1000);
+        grassEl.object3D.visible = false;
+      }, 500);
     }
   },
   tick: function () {
