@@ -13,7 +13,7 @@ window.XRExtras.AFrame.loadAFrameForXr({
   version: 'latest',
 }).then(() => {
   document.body.insertAdjacentHTML('beforeend', xrScene);
-  document.body.insertAdjacentHTML('beforeend', xrScreen);
+  document.body.insertAdjacentHTML('afterbegin', xrScreen);
 });
 
 // xrextras-log-to-screen
