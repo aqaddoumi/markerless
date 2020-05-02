@@ -23,6 +23,11 @@
   }
 }
 
+#interface-container {
+  height: 100vh;
+  height: -webkit-fill-available;
+}
+
 #tap-circle {
   max-height: 100%;
   position: absolute;
