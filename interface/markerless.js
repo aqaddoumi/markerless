@@ -1,5 +1,5 @@
 const xrScreen = `
-<div style="background-color: red; height: 100%; width: 100%;"></div>
+<div style="background-color: red; height: 100%; width: 100%; position: absolute;"></div>
 `;
 
 const xrScene = `
@@ -12,8 +12,8 @@ const xrScene = `
 window.XRExtras.AFrame.loadAFrameForXr({
   version: 'latest',
 }).then(() => {
-  document.body.insertAdjacentHTML('beforeend', xrScreen);
   document.body.insertAdjacentHTML('beforeend', xrScene);
+  document.body.insertAdjacentHTML('beforeend', xrScreen);
 });
 
 // xrextras-log-to-screen
