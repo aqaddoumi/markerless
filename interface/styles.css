@@ -25,7 +25,6 @@
 
 #interface-container {
   height: 100vh;
-  height: -webkit-fill-available;
 }
 
 #tap-circle {
