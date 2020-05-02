@@ -1,5 +1,5 @@
 const xrScreen = `
-<div style="background-color: red; height: 100%; width: 100%; position: absolute;"></div>
+<div style="background-color: red; height: 100%; width: 100%;"></div>
 `;
 
 const xrScene = `
