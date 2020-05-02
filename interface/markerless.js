@@ -1,6 +1,6 @@
-const xrScreen = `
+/*const xrScreen = `
 <div id="interface-container" style="background-color: red; height: 100%; width: 100%;"></div>
-`;
+`;*/
 
 const xrScene = `
 <a-scene xrweb xrextras-almost-there xrextras-loading xrextras-runtime-error>
@@ -13,7 +13,7 @@ window.XRExtras.AFrame.loadAFrameForXr({
   version: 'latest',
 }).then(() => {
   document.body.insertAdjacentHTML('beforeend', xrScene);
-  document.body.insertAdjacentHTML('afterbegin', xrScreen);
+  //document.body.insertAdjacentHTML('afterbegin', xrScreen);
 });
 
 // xrextras-log-to-screen
