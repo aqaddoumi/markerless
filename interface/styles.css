@@ -24,8 +24,12 @@
 }
 
 #interface-container {
-  height: 100vh;
-  background-color: green;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: red;
 }
 
 #tap-circle {
