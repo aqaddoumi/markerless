@@ -293,7 +293,7 @@ const tapBusinessCardComponent = {
 
     function createParentElement() {
       parentEl.setAttribute('id', 'parent-entity');
-      parentEl.setAttribute('scale', '2 2 2');
+      parentEl.setAttribute('scale', '1.7 1.7 1.7');
       element.appendChild(parentEl);
     }
 
@@ -311,7 +311,7 @@ const tapBusinessCardComponent = {
       videoEl.setAttribute('width', width);
       videoEl.setAttribute('height', height);
       videoEl.object3D.translateY(height / 2);
-      videoEl.object3D.translateZ(-0.5);
+      videoEl.object3D.translateZ(-0.3);
 
       parentEl.appendChild(videoEl);
     }
