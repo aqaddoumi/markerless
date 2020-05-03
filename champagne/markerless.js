@@ -273,7 +273,7 @@ const tapBusinessCardComponent = {
     const whoosh01SoundAsset = document.getElementById('whoosh-01-sound-asset');
 
     const trayEl = document.createElement('a-entity');
-    const buckerEl = document.createElement('a-entity');
+    const bucketEl = document.createElement('a-entity');
     const glassesEl = document.createElement('a-entity');
 
     //Elements
@@ -281,15 +281,13 @@ const tapBusinessCardComponent = {
     const videoEl = document.createElement('a-plane');
     const loadingEl = document.createElement('a-plane');
 
-    //<a-asset-item id="tray-model-asset" src="assets/tray.glb"></a-asset-item>
-    //<a-asset-item id="bucket-model-asset" src="assets/bucket.glb"></a-asset-item>
-    //<a-asset-item id="glasses-model-asset" src="assets/glasses.glb"></a-asset-item>
-
     //Initialize Elements
     createParentElement();
     createVideoElement();
     createLoadingElement();
 
+    createTrayElement();
+    createBucketElement();
     createTrayElement();
 
     function createParentElement() {
@@ -331,6 +329,20 @@ const tapBusinessCardComponent = {
     function createTrayElement() {
       trayEl.object3D.visible = true;
       trayEl.setAttribute('gltf-model', '#tray-model-asset');
+      trayEl.setAttribute('cube-env-map');
+      parentEl.appendChild(trayEl);
+    }
+
+    function createBucketElement() {
+      trayEl.object3D.visible = true;
+      trayEl.setAttribute('gltf-model', '#bucket-model-asset');
+      trayEl.setAttribute('cube-env-map');
+      parentEl.appendChild(trayEl);
+    }
+
+    function createGlassesElement() {
+      trayEl.object3D.visible = true;
+      trayEl.setAttribute('gltf-model', '#glasses-model-asset');
       trayEl.setAttribute('cube-env-map');
       parentEl.appendChild(trayEl);
     }
