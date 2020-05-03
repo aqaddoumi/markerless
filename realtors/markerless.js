@@ -253,7 +253,7 @@ const tapBusinessCardComponent = {
         const userInterface = document.getElementById(
           'interface-container-two'
         );
-        userInterface.style.display = 'none';
+        userInterface.style.visibility = 'visible';
       }, 5000);
     }
 
