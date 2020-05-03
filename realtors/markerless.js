@@ -254,7 +254,7 @@ const tapBusinessCardComponent = {
           'interface-container-two'
         );
         userInterface.style.visibility = 'visible';
-      }, 5000);
+      }, 7000);
     }
 
     function showLoadingElement() {
