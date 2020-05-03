@@ -338,6 +338,8 @@ const tapBusinessCardComponent = {
       bucketEl.object3D.visible = true;
       bucketEl.setAttribute('gltf-model', '#bucket-model-asset');
       bucketEl.setAttribute('cube-env-map');
+      bucketEl.setAttribute('scale', '3 3 3');
+      bucketEl.setAttribute('position', '3 0 0');
       parentEl.appendChild(bucketEl);
     }
 
@@ -345,6 +347,8 @@ const tapBusinessCardComponent = {
       glassesEl.object3D.visible = true;
       glassesEl.setAttribute('gltf-model', '#glasses-model-asset');
       glassesEl.setAttribute('cube-env-map');
+      bucketEl.setAttribute('scale', '3 3 3');
+      bucketEl.setAttribute('position', '-3 0 0');
       parentEl.appendChild(glassesEl);
     }
 
