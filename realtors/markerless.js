@@ -76,6 +76,11 @@ const tapBusinessCardComponent = {
     videoAsset: { type: 'string' },
   },
   init: function () {
+    let scene = this.el.sceneEl;
+    scene.addEventListener('realityready', () => {
+      showInterface();
+    });
+
     //Assign Element & Data
     const element = this.el;
     const data = this.data;
@@ -231,6 +236,11 @@ const tapBusinessCardComponent = {
         }
       }
     });
+
+    function showInterface() {
+      const userInterface = document.getElementById('interface-container');
+      userInterface.style.visibility = 'visible';
+    }
 
     function hideInterface() {
       const userInterface = document.getElementById('interface-container');
