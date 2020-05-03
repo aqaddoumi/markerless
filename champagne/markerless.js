@@ -272,15 +272,25 @@ const tapBusinessCardComponent = {
     const pop03SoundAsset = document.getElementById('pop-03-sound-asset');
     const whoosh01SoundAsset = document.getElementById('whoosh-01-sound-asset');
 
+    const trayEl = document.createElement('a-entity');
+    const buckerEl = document.createElement('a-entity');
+    const glassesEl = document.createElement('a-entity');
+
     //Elements
     const parentEl = document.createElement('a-entity');
     const videoEl = document.createElement('a-plane');
     const loadingEl = document.createElement('a-plane');
 
+    //<a-asset-item id="tray-model-asset" src="assets/tray.glb"></a-asset-item>
+    //<a-asset-item id="bucket-model-asset" src="assets/bucket.glb"></a-asset-item>
+    //<a-asset-item id="glasses-model-asset" src="assets/glasses.glb"></a-asset-item>
+
     //Initialize Elements
     createParentElement();
     createVideoElement();
     createLoadingElement();
+
+    createTrayElement();
 
     function createParentElement() {
       parentEl.setAttribute('id', 'parent-entity');
@@ -298,7 +308,7 @@ const tapBusinessCardComponent = {
       });
 
       const width = 1.5;
-      const height = (960 / 540) * width;
+      const height = (960 / 960) * width;
       videoEl.setAttribute('width', width);
       videoEl.setAttribute('height', height);
       videoEl.object3D.translateY(height / 2);
@@ -316,6 +326,13 @@ const tapBusinessCardComponent = {
         'property: rotation; to: 0 0 -360; dur: 1000; loop: true; easing: linear'
       );
       parentEl.appendChild(loadingEl);
+    }
+
+    function createTrayElement() {
+      trayEl.object3D.visible = true;
+      trayEl.setAttribute('gltf-model', '#tray-model-asset');
+      trayEl.setAttribute('cube-env-map');
+      parentEl.appendChild(trayEl);
     }
 
     const ground = document.getElementById('ground');
