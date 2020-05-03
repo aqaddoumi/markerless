@@ -283,12 +283,13 @@ const tapBusinessCardComponent = {
 
     //Initialize Elements
     createParentElement();
-    createVideoElement();
     createLoadingElement();
 
     createTrayElement();
     createBucketElement();
     createGlassesElement();
+
+    createVideoElement();
 
     function createParentElement() {
       parentEl.setAttribute('id', 'parent-entity');
@@ -297,7 +298,6 @@ const tapBusinessCardComponent = {
 
     function createVideoElement() {
       videoEl.object3D.visible = false;
-      videoEl.object3D.translateZ(0.5);
       videoEl.setAttribute('material', 'src', videoAsset);
       videoEl.setAttribute('material', {
         shader: 'chromakey',
