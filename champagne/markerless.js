@@ -310,7 +310,6 @@ const tapBusinessCardComponent = {
       videoEl.setAttribute('width', width);
       videoEl.setAttribute('height', height);
       videoEl.object3D.translateY(height / 2);
-      videoEl.object3D.translateZ(-0.5);
 
       parentEl.appendChild(videoEl);
     }
@@ -339,7 +338,7 @@ const tapBusinessCardComponent = {
       bucketEl.object3D.visible = false;
       bucketEl.setAttribute('gltf-model', '#bucket-model-asset');
       bucketEl.setAttribute('cube-env-map', '');
-      bucketEl.setAttribute('scale', '4 4 4');
+      bucketEl.setAttribute('scale', '3.5 3.5 3.5');
       bucketEl.setAttribute('position', '0.8 0 0');
       parentEl.appendChild(bucketEl);
     }
@@ -348,7 +347,7 @@ const tapBusinessCardComponent = {
       glassesEl.object3D.visible = false;
       glassesEl.setAttribute('gltf-model', '#glasses-model-asset');
       glassesEl.setAttribute('cube-env-map', '');
-      glassesEl.setAttribute('scale', '4 4 4');
+      glassesEl.setAttribute('scale', '3.5 3.5 3.5');
       glassesEl.setAttribute('position', '-1 0 0');
       parentEl.appendChild(glassesEl);
     }
@@ -388,7 +387,7 @@ const tapBusinessCardComponent = {
             showVideoElement();
             setTimeout(function () {
               playVideo();
-            }, 650);
+            }, 1650);
           }
         }
       }
@@ -413,14 +412,16 @@ const tapBusinessCardComponent = {
     }
 
     function showTrayElement() {
-      trayEl.object3D.visible = true;
-      trayEl.setAttribute('scale', '0 0 0');
-      trayEl.setAttribute(
-        'animation',
-        'property: scale; to: 3 3 3; dur: 750; easing: easeOutElastic;'
-      );
-      pop01SoundAsset.currentTime = 0;
-      pop01SoundAsset.play();
+      setTimeout(function () {
+        trayEl.object3D.visible = true;
+        trayEl.setAttribute('scale', '0 0 0');
+        trayEl.setAttribute(
+          'animation',
+          'property: scale; to: 3 3 3; dur: 1000; easing: easeOutElastic;'
+        );
+        pop01SoundAsset.currentTime = 0;
+        pop01SoundAsset.play();
+      }, 250);
     }
 
     function showBucketElement() {
@@ -429,11 +430,11 @@ const tapBusinessCardComponent = {
         bucketEl.setAttribute('scale', '0 0 0');
         bucketEl.setAttribute(
           'animation',
-          'property: scale; to: 4 4 4; dur: 750; easing: easeOutElastic;'
+          'property: scale; to: 3.5 3.5 3.5; dur: 1000; easing: easeOutElastic;'
         );
         pop02SoundAsset.currentTime = 0;
         pop02SoundAsset.play();
-      }, 375);
+      }, 750);
     }
 
     function showGlassesElement() {
@@ -442,11 +443,11 @@ const tapBusinessCardComponent = {
         glassesEl.setAttribute('scale', '0 0 0');
         glassesEl.setAttribute(
           'animation',
-          'property: scale; to: 4 4 4; dur: 750; easing: easeOutElastic;'
+          'property: scale; to: 3.5 3.5 3.5; dur: 1000; easing: easeOutElastic;'
         );
         pop03SoundAsset.currentTime = 0;
         pop03SoundAsset.play();
-      }, 750);
+      }, 1250);
     }
 
     function showVideoElement() {
@@ -456,11 +457,11 @@ const tapBusinessCardComponent = {
         videoEl.setAttribute('scale', '0 0 0');
         videoEl.setAttribute(
           'animation',
-          'property: scale; to: 1 1 1; dur: 750; easing: easeOutElastic;'
+          'property: scale; to: 1 1 1; dur: 1500; easing: easeOutElastic;'
         );
         pop03SoundAsset.currentTime = 0;
         pop03SoundAsset.play();
-      }, 1100);
+      }, 1750);
     }
 
     function playVideo() {
@@ -482,7 +483,7 @@ const tapBusinessCardComponent = {
           showVideoElement();
           setTimeout(function () {
             playVideo();
-          }, 1000);
+          }, 1650);
         }
       }
     }
