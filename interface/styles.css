@@ -69,6 +69,7 @@
 }
 
 #interface-container-two {
+  visibility: hidden;
   position: absolute;
   left: 0;
   top: 0;
