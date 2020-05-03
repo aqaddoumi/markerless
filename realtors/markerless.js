@@ -229,6 +229,7 @@ const tapBusinessCardComponent = {
             showGrassElement();
             showSignElement();
             showVideoElement();
+            showLearnMore();
             setTimeout(function () {
               playVideo();
             }, 650);
@@ -245,6 +246,15 @@ const tapBusinessCardComponent = {
     function hideInterface() {
       const userInterface = document.getElementById('interface-container');
       userInterface.style.display = 'none';
+    }
+
+    function showLearnMore() {
+      setTimeout(function () {
+        const userInterface = document.getElementById(
+          'interface-container-two'
+        );
+        userInterface.style.display = 'none';
+      }, 5000);
     }
 
     function showLoadingElement() {
@@ -310,6 +320,7 @@ const tapBusinessCardComponent = {
           showGrassElement();
           showSignElement();
           showVideoElement();
+          showLearnMore();
           setTimeout(function () {
             playVideo();
           }, 650);
