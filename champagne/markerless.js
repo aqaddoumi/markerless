@@ -288,7 +288,7 @@ const tapBusinessCardComponent = {
 
     createTrayElement();
     createBucketElement();
-    createTrayElement();
+    createGlassesElement();
 
     function createParentElement() {
       parentEl.setAttribute('id', 'parent-entity');
@@ -329,7 +329,7 @@ const tapBusinessCardComponent = {
     function createTrayElement() {
       trayEl.object3D.visible = true;
       trayEl.setAttribute('gltf-model', '#tray-model-asset');
-      trayEl.setAttribute('cube-env-map');
+      trayEl.setAttribute('cube-env-map', '');
       trayEl.setAttribute('scale', '3 3 3');
       parentEl.appendChild(trayEl);
     }
@@ -337,18 +337,18 @@ const tapBusinessCardComponent = {
     function createBucketElement() {
       bucketEl.object3D.visible = true;
       bucketEl.setAttribute('gltf-model', '#bucket-model-asset');
-      bucketEl.setAttribute('cube-env-map');
+      bucketEl.setAttribute('cube-env-map', '');
       bucketEl.setAttribute('scale', '3 3 3');
-      bucketEl.setAttribute('position', '3 0 0');
+      bucketEl.setAttribute('position', '1 0 0');
       parentEl.appendChild(bucketEl);
     }
 
     function createGlassesElement() {
       glassesEl.object3D.visible = true;
       glassesEl.setAttribute('gltf-model', '#glasses-model-asset');
-      glassesEl.setAttribute('cube-env-map');
-      bucketEl.setAttribute('scale', '3 3 3');
-      bucketEl.setAttribute('position', '-3 0 0');
+      glassesEl.setAttribute('cube-env-map', '');
+      glassesEl.setAttribute('scale', '3 3 3');
+      glassesEl.setAttribute('position', '-1 0 0');
       parentEl.appendChild(glassesEl);
     }
 
