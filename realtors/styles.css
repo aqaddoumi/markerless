@@ -1,3 +1,28 @@
+@font-face {
+  font-family: Gotham;
+  src: url(./assets/Gotham-Bold.otf);
+}
+
+@keyframes circle-animation {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+@keyframes hand-animation {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+
 #interface-container {
   position: absolute;
   left: 0;
@@ -8,17 +33,46 @@
   pointer-events: none;
 }
 
-#interface-text-container {
+#tap-circle {
+  max-height: 100%;
   position: absolute;
-  left: 10%;
-  right: 10%;
-  text-align: center;
-  transform: translateY(20%);
+  z-index: 3;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  animation-name: circle-animation;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
 }
 
-#interface-text {
+#tap-hand {
+  max-height: 100%;
+  position: absolute;
+  z-index: 3;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  animation-name: hand-animation;
+  animation-duration: 0.5s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+.gotham-font {
+  font-family: Gotham;
   color: white;
-  z-index: 10;
-  font-family: 'Roboto', sans-serif;
-  font-size: x-large;
+  -webkit-text-stroke: 2px #0777f6;
+}
+
+#interface-container-two {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 11;
 }

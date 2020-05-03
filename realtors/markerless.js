@@ -1,9 +1,4 @@
 const xrScene = `
-<div id="interface-container">
-  <div id="interface-text-container">
-    <h1 id="interface-text">Tap anywhere to see the experience</h1>
-  </div>
-</div>
 <a-scene tap-business-card="videoAsset: #talk-video-asset" xrweb xrextras-almost-there xrextras-loading xrextras-runtime-error>
   <a-assets>
     <audio id="pop-01-sound-asset" src="assets/pop-01-sound.mp3" preload="auto"></audio>
