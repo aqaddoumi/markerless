@@ -310,6 +310,7 @@ const tapBusinessCardComponent = {
       videoEl.setAttribute('width', width);
       videoEl.setAttribute('height', height);
       videoEl.object3D.translateY(height / 2);
+      videoEl.object3D.translateZ(-0.5);
 
       parentEl.appendChild(videoEl);
     }
@@ -327,7 +328,7 @@ const tapBusinessCardComponent = {
     }
 
     function createTrayElement() {
-      trayEl.object3D.visible = true;
+      trayEl.object3D.visible = false;
       trayEl.setAttribute('gltf-model', '#tray-model-asset');
       trayEl.setAttribute('cube-env-map', '');
       trayEl.setAttribute('scale', '3 3 3');
@@ -335,19 +336,19 @@ const tapBusinessCardComponent = {
     }
 
     function createBucketElement() {
-      bucketEl.object3D.visible = true;
+      bucketEl.object3D.visible = false;
       bucketEl.setAttribute('gltf-model', '#bucket-model-asset');
       bucketEl.setAttribute('cube-env-map', '');
-      bucketEl.setAttribute('scale', '3 3 3');
-      bucketEl.setAttribute('position', '1 0 0');
+      bucketEl.setAttribute('scale', '4 4 4');
+      bucketEl.setAttribute('position', '0.8 0 0');
       parentEl.appendChild(bucketEl);
     }
 
     function createGlassesElement() {
-      glassesEl.object3D.visible = true;
+      glassesEl.object3D.visible = false;
       glassesEl.setAttribute('gltf-model', '#glasses-model-asset');
       glassesEl.setAttribute('cube-env-map', '');
-      glassesEl.setAttribute('scale', '3 3 3');
+      glassesEl.setAttribute('scale', '4 4 4');
       glassesEl.setAttribute('position', '-1 0 0');
       parentEl.appendChild(glassesEl);
     }
@@ -381,8 +382,10 @@ const tapBusinessCardComponent = {
         } else {
           if (!isExperiencePlaying) {
             isExperiencePlaying = true;
+            showTrayElement();
+            showBucketElement();
+            showGlassesElement();
             showVideoElement();
-            showLearnMore();
             setTimeout(function () {
               playVideo();
             }, 650);
@@ -401,21 +404,49 @@ const tapBusinessCardComponent = {
       userInterface.style.display = 'none';
     }
 
-    function showLearnMore() {
-      setTimeout(function () {
-        const userInterface = document.getElementById(
-          'interface-container-two'
-        );
-        userInterface.style.visibility = 'visible';
-      }, 7000);
-    }
-
     function showLoadingElement() {
       loadingEl.object3D.visible = true;
     }
 
     function hideLoadingElement() {
       loadingEl.object3D.visible = false;
+    }
+
+    function showTrayElement() {
+      trayEl.object3D.visible = true;
+      trayEl.setAttribute('scale', '0 0 0');
+      trayEl.setAttribute(
+        'animation',
+        'property: scale; to: 3 3 3; dur: 750; easing: easeOutElastic;'
+      );
+      pop01SoundAsset.currentTime = 0;
+      pop01SoundAsset.play();
+    }
+
+    function showBucketElement() {
+      setTimeout(function () {
+        bucketEl.object3D.visible = true;
+        bucketEl.setAttribute('scale', '0 0 0');
+        bucketEl.setAttribute(
+          'animation',
+          'property: scale; to: 4 4 4; dur: 750; easing: easeOutElastic;'
+        );
+        pop02SoundAsset.currentTime = 0;
+        pop02SoundAsset.play();
+      }, 375);
+    }
+
+    function showGlassesElement() {
+      setTimeout(function () {
+        glassesEl.object3D.visible = true;
+        glassesEl.setAttribute('scale', '0 0 0');
+        glassesEl.setAttribute(
+          'animation',
+          'property: scale; to: 4 4 4; dur: 750; easing: easeOutElastic;'
+        );
+        pop03SoundAsset.currentTime = 0;
+        pop03SoundAsset.play();
+      }, 750);
     }
 
     function showVideoElement() {
@@ -429,7 +460,7 @@ const tapBusinessCardComponent = {
         );
         pop03SoundAsset.currentTime = 0;
         pop03SoundAsset.play();
-      }, 750);
+      }, 1100);
     }
 
     function playVideo() {
@@ -445,15 +476,30 @@ const tapBusinessCardComponent = {
         if (!isExperiencePlaying) {
           isExperiencePlaying = true;
           hideLoadingElement();
+          showTrayElement();
+          showBucketElement();
+          showGlassesElement();
           showVideoElement();
           setTimeout(function () {
             playVideo();
-          }, 650);
+          }, 1000);
         }
       }
     }
 
     function finishExperience() {
+      trayEl.setAttribute(
+        'animation',
+        'property: scale; to: 0 0 0; dur: 500; easing: easeInQuint; delay: 0'
+      );
+      bucketEl.setAttribute(
+        'animation',
+        'property: scale; to: 0 0 0; dur: 500; easing: easeInQuint; delay: 0'
+      );
+      glassesEl.setAttribute(
+        'animation',
+        'property: scale; to: 0 0 0; dur: 500; easing: easeInQuint; delay: 0'
+      );
       videoEl.setAttribute(
         'animation',
         'property: scale; to: 0 0 0; dur: 500; easing: easeInQuint; delay: 0'
@@ -466,6 +512,9 @@ const tapBusinessCardComponent = {
         hasUserTapped = false;
         isExperiencePlaying = false;
         videoEl.object3D.visible = false;
+        trayEl.object3D.visible = false;
+        bucketEl.object3D.visible = false;
+        glassesEl.object3D.visible = false;
       }, 500);
     }
   },
