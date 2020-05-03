@@ -67,3 +67,12 @@
   color: white;
   -webkit-text-stroke: 2px #0777f6;
 }
+
+#interface-container-two {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 11;
+}
