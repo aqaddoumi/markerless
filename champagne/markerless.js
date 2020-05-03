@@ -310,6 +310,7 @@ const tapBusinessCardComponent = {
       videoEl.setAttribute('width', width);
       videoEl.setAttribute('height', height);
       videoEl.object3D.translateY(height / 2);
+      videoEl.object3D.translateZ(-1);
 
       parentEl.appendChild(videoEl);
     }
@@ -330,7 +331,6 @@ const tapBusinessCardComponent = {
       trayEl.object3D.visible = false;
       trayEl.setAttribute('gltf-model', '#tray-model-asset');
       trayEl.setAttribute('cube-env-map', '');
-      trayEl.setAttribute('scale', '3 3 3');
       parentEl.appendChild(trayEl);
     }
 
@@ -338,7 +338,6 @@ const tapBusinessCardComponent = {
       bucketEl.object3D.visible = false;
       bucketEl.setAttribute('gltf-model', '#bucket-model-asset');
       bucketEl.setAttribute('cube-env-map', '');
-      bucketEl.setAttribute('scale', '3.5 3.5 3.5');
       bucketEl.setAttribute('position', '0.8 0 0');
       parentEl.appendChild(bucketEl);
     }
@@ -347,7 +346,6 @@ const tapBusinessCardComponent = {
       glassesEl.object3D.visible = false;
       glassesEl.setAttribute('gltf-model', '#glasses-model-asset');
       glassesEl.setAttribute('cube-env-map', '');
-      glassesEl.setAttribute('scale', '3.5 3.5 3.5');
       glassesEl.setAttribute('position', '-1 0 0');
       parentEl.appendChild(glassesEl);
     }
