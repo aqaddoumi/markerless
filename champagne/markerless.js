@@ -293,6 +293,7 @@ const tapBusinessCardComponent = {
 
     function createParentElement() {
       parentEl.setAttribute('id', 'parent-entity');
+      parentEl.setAttribute('scale', '2 2 2');
       element.appendChild(parentEl);
     }
 
@@ -305,12 +306,12 @@ const tapBusinessCardComponent = {
         color: '0.1 0.9 0.2',
       });
 
-      const width = 1.5;
+      const width = 1.2;
       const height = (960 / 960) * width;
       videoEl.setAttribute('width', width);
       videoEl.setAttribute('height', height);
       videoEl.object3D.translateY(height / 2);
-      videoEl.object3D.translateZ(-1);
+      videoEl.object3D.translateZ(-0.5);
 
       parentEl.appendChild(videoEl);
     }
