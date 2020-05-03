@@ -330,21 +330,22 @@ const tapBusinessCardComponent = {
       trayEl.object3D.visible = true;
       trayEl.setAttribute('gltf-model', '#tray-model-asset');
       trayEl.setAttribute('cube-env-map');
+      trayEl.setAttribute('scale', '3 3 3');
       parentEl.appendChild(trayEl);
     }
 
     function createBucketElement() {
-      trayEl.object3D.visible = true;
-      trayEl.setAttribute('gltf-model', '#bucket-model-asset');
-      trayEl.setAttribute('cube-env-map');
-      parentEl.appendChild(trayEl);
+      bucketEl.object3D.visible = true;
+      bucketEl.setAttribute('gltf-model', '#bucket-model-asset');
+      bucketEl.setAttribute('cube-env-map');
+      parentEl.appendChild(bucketEl);
     }
 
     function createGlassesElement() {
-      trayEl.object3D.visible = true;
-      trayEl.setAttribute('gltf-model', '#glasses-model-asset');
-      trayEl.setAttribute('cube-env-map');
-      parentEl.appendChild(trayEl);
+      glassesEl.object3D.visible = true;
+      glassesEl.setAttribute('gltf-model', '#glasses-model-asset');
+      glassesEl.setAttribute('cube-env-map');
+      parentEl.appendChild(glassesEl);
     }
 
     const ground = document.getElementById('ground');
