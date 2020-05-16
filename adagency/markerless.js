@@ -287,7 +287,7 @@ const tapBusinessCardComponent = {
         );
         pop02SoundAsset.currentTime = 0;
         pop02SoundAsset.play();
-      }, 45500);
+      }, 48500);
     }
 
     function showVideoElement() {
