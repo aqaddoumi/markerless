@@ -1,9 +1,4 @@
 const xrScene = `
-<div id="interface-container">
-  <div id="interface-text-container">
-    <h1 id="interface-text">Tap anywhere to see the experience</h1>
-  </div>
-</div>
 <a-scene tap-business-card="videoAsset: #talk-video-asset" xrweb xrextras-almost-there xrextras-loading xrextras-runtime-error>
   <a-assets>
     <audio id="pop-01-sound-asset" src="assets/pop-01-sound.mp3" preload="auto"></audio>
@@ -81,6 +76,11 @@ const tapBusinessCardComponent = {
     videoAsset: { type: 'string' },
   },
   init: function () {
+    let scene = this.el.sceneEl;
+    scene.addEventListener('realityready', () => {
+      showInterface();
+    });
+
     //Assign Element & Data
     const element = this.el;
     const data = this.data;
@@ -229,6 +229,7 @@ const tapBusinessCardComponent = {
             showGrassElement();
             showSignElement();
             showVideoElement();
+            showLearnMore();
             setTimeout(function () {
               playVideo();
             }, 650);
@@ -237,9 +238,23 @@ const tapBusinessCardComponent = {
       }
     });
 
+    function showInterface() {
+      const userInterface = document.getElementById('interface-container');
+      userInterface.style.visibility = 'visible';
+    }
+
     function hideInterface() {
       const userInterface = document.getElementById('interface-container');
       userInterface.style.display = 'none';
+    }
+
+    function showLearnMore() {
+      setTimeout(function () {
+        const userInterface = document.getElementById(
+          'interface-container-two'
+        );
+        userInterface.style.visibility = 'visible';
+      }, 7000);
     }
 
     function showLoadingElement() {
@@ -305,6 +320,7 @@ const tapBusinessCardComponent = {
           showGrassElement();
           showSignElement();
           showVideoElement();
+          showLearnMore();
           setTimeout(function () {
             playVideo();
           }, 650);
