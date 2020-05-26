@@ -1,6 +1,8 @@
 require('!style-loader!css-loader!../fonts/fonts.css');
 require('!style-loader!css-loader!./almost-there-module.css');
 
+require('./qrcode.min.js');
+
 const html = require('./almost-there-module.html');
 
 let almostThereModule = null;
@@ -142,8 +144,8 @@ function create() {
     showId('error_msg_device');
     const scriptElem = document.createElement('script');
     scriptElem.type = 'text/javascript';
-    //scriptElem.src = 'https://cdn.8thwall.com/web/share/qrcode8-1.1.0.js';
-    scriptElem.src = './qrcode.min.js';
+    scriptElem.src = 'https://cdn.8thwall.com/web/share/qrcode8-1.1.0.js';
+    //scriptElem.src = './qrcode.min.js';
     scriptElem.onload = () => {
       console.log('Test');
       //document.getElementById('qrcode').innerHTML = '<h1>A</h1>';
@@ -162,10 +164,12 @@ function create() {
         pal: ['#187BF2', '#fff'],
         vrb: 0,
       });*/
-      var h = document.createElement('h1');
-      h.innerHTML = 'A';
+      var qr = new QRCode('Good Luck');
 
-      document.getElementById('qrcode').appendChild(h);
+      //var h = document.createElement('h1');
+      //h.innerHTML = 'A';
+
+      document.getElementById('qrcode').appendChild(qr);
     };
     document.getElementById('almostthereContainer').appendChild(scriptElem);
   };
