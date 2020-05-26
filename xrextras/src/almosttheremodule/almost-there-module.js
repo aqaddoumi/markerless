@@ -154,7 +154,7 @@ function create() {
         250,
         80
       );*/
-      var qr = new QRCode({
+      var qr = QRCode({
         msg: redirectUrl,
         dim: 250,
         pad: 0,
