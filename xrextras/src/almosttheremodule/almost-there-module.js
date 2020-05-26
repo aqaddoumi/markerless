@@ -154,17 +154,17 @@ function create() {
         250,
         80
       );*/
-      /*var qr = new QRCode({
+      var qr = new QRCode({
         msg: redirectUrl,
-        dim: 256,
+        dim: 250,
         pad: 0,
         mtx: -1,
         ecl: 'H',
         ecb: 1,
         pal: ['#187BF2', '#fff'],
         vrb: 0,
-      });*/
-      var qr = QRCode('Good Luck');
+      });
+      //var qr = QRCode('Good Luck');
 
       //var h = document.createElement('h1');
       //h.innerHTML = 'A';
