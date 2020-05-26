@@ -149,11 +149,11 @@ function create() {
     scriptElem.onload = () => {
       //console.log('Test');
       //document.getElementById('qrcode').innerHTML = '<h1>A</h1>';
-      document.getElementById('qrcode').innerHTML = qrcode8.generateQR8Svg(
+      /*document.getElementById('qrcode').innerHTML = qrcode8.generateQR8Svg(
         redirectUrl,
         250,
         80
-      );
+      );*/
       /*var qr = new QRCode({
         msg: redirectUrl,
         dim: 256,
@@ -169,7 +169,7 @@ function create() {
       //var h = document.createElement('h1');
       //h.innerHTML = 'A';
 
-      //document.getElementById('qrcode').appendChild(qr);
+      document.getElementById('qrcode').appendChild(qr);
     };
     document.getElementById('almostthereContainer').appendChild(scriptElem);
   };
