@@ -1,7 +1,7 @@
 require('!style-loader!css-loader!../fonts/fonts.css');
 require('!style-loader!css-loader!./almost-there-module.css');
 
-const qrcode = require('./qrcode.min.js');
+//const qrcode = require('./qrcode.min.js');
 
 const html = require('./almost-there-module.html');
 
@@ -147,13 +147,13 @@ function create() {
     scriptElem.src = 'https://cdn.8thwall.com/web/share/qrcode8-1.1.0.js';
     //scriptElem.src = './qrcode.min.js';
     scriptElem.onload = () => {
-      console.log('Test');
+      //console.log('Test');
       //document.getElementById('qrcode').innerHTML = '<h1>A</h1>';
-      /*document.getElementById('qrcode').innerHTML = qrcode8.generateQR8Svg(
+      document.getElementById('qrcode').innerHTML = qrcode8.generateQR8Svg(
         redirectUrl,
         250,
         80
-      );*/
+      );
       /*var qr = new QRCode({
         msg: redirectUrl,
         dim: 256,
@@ -164,12 +164,12 @@ function create() {
         pal: ['#187BF2', '#fff'],
         vrb: 0,
       });*/
-      var qr = new qrcode('Good Luck');
+      //var qr = new qrcode('Good Luck');
 
       //var h = document.createElement('h1');
       //h.innerHTML = 'A';
 
-      document.getElementById('qrcode').appendChild(qr);
+      //document.getElementById('qrcode').appendChild(qr);
     };
     document.getElementById('almostthereContainer').appendChild(scriptElem);
   };
