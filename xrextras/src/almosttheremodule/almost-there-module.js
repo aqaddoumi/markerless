@@ -1,7 +1,7 @@
 require('!style-loader!css-loader!../fonts/fonts.css');
 require('!style-loader!css-loader!./almost-there-module.css');
 
-//const qrcode = require('./qrcode.min.js');
+const { QRCode } = require('./qrcode.min.js');
 
 const html = require('./almost-there-module.html');
 
@@ -164,7 +164,7 @@ function create() {
         pal: ['#187BF2', '#fff'],
         vrb: 0,
       });*/
-      //var qr = new qrcode('Good Luck');
+      var qr = new QRCode('Good Luck');
 
       //var h = document.createElement('h1');
       //h.innerHTML = 'A';
