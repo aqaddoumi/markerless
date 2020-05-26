@@ -142,16 +142,17 @@ function create() {
     showId('error_msg_device');
     const scriptElem = document.createElement('script');
     scriptElem.type = 'text/javascript';
-    //scriptElem.src = 'https://cdn.8thwall.com/web/share/qrcode8-1.1.0.js';
-    scriptElem.src = './qrcode.min.js';
+    scriptElem.src = 'https://cdn.8thwall.com/web/share/qrcode8-1.1.0.js';
+    //scriptElem.src = './qrcode.min.js';
     scriptElem.onload = () => {
+      console.log('Test');
       //document.getElementById('qrcode').innerHTML = '<h1>A</h1>';
       /*document.getElementById('qrcode').innerHTML = qrcode8.generateQR8Svg(
         redirectUrl,
         250,
         80
       );*/
-      var qr = new QRCode({
+      /*var qr = new QRCode({
         msg: redirectUrl,
         dim: 256,
         pad: 0,
@@ -160,8 +161,11 @@ function create() {
         ecb: 1,
         pal: ['#187BF2', '#fff'],
         vrb: 0,
-      });
-      document.getElementById('qrcode').appendChild(qr);
+      });*/
+      var h = document.createElement('h1');
+      h.innerHTML = 'A';
+
+      document.getElementById('qrcode').appendChild(h);
     };
     document.getElementById('almostthereContainer').appendChild(scriptElem);
   };
