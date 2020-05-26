@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TalkAR</title>
+    <script src="qrcode.min.js"></script>
+  </head>
+  <body>
+    <script>
+      'use strict';
+
+      var qr = new QRCode({
+        msg: 'https://github.com/datalog/qrcode-svg',
+        dim: 256,
+        pad: 0,
+        mtx: -1,
+        ecl: 'H',
+        ecb: 1,
+        pal: ['#187BF2', '#fff'],
+        vrb: 0,
+      });
+
+      document.body.appendChild(qr);
+    </script>
+  </body>
+</html>
