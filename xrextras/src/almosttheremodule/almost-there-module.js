@@ -145,8 +145,9 @@ function create() {
     //scriptElem.src = 'https://cdn.8thwall.com/web/share/qrcode8-1.1.0.js'
     scriptElem.src = './qrcode.min.js';
     scriptElem.onload = () => {
+      document.getElementById('qrcode').innerHTML = '<h1>A</h1>';
       //document.getElementById('qrcode').innerHTML = qrcode8.generateQR8Svg(redirectUrl, 250, 80)
-      document.getElementById('qrcode').innerHTML = new QRCode({
+      /*document.getElementById('qrcode').innerHTML = new QRCode({
         msg: redirectUrl,
         dim: 256,
         pad: 0,
@@ -155,7 +156,7 @@ function create() {
         ecb: 1,
         pal: ['#187BF2', '#fff'],
         vrb: 0,
-      });
+      });*/
     };
     document.getElementById('almostthereContainer').appendChild(scriptElem);
   };
