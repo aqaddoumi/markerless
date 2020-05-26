@@ -145,8 +145,8 @@ function create() {
 
     var qr = QRCode({
       msg: redirectUrl,
-      dim: 256,
-      pad: 12,
+      dim: 250,
+      pad: 4,
       mtx: -1,
       ecl: 'H',
       ecb: 1,
@@ -166,7 +166,7 @@ function create() {
       );*/
     //};
 
-    document.getElementById('almostthereContainer').appendChild(scriptElem);
+    //document.getElementById('almostthereContainer').appendChild(scriptElem);
   };
 
   const checkCompatibility = () => {
