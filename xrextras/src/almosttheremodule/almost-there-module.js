@@ -164,7 +164,7 @@ function create() {
         pal: ['#187BF2', '#fff'],
         vrb: 0,
       });*/
-      var qr = new QRCode('Good Luck');
+      var qr = QRCode('Good Luck');
 
       //var h = document.createElement('h1');
       //h.innerHTML = 'A';
