@@ -142,8 +142,8 @@ function create() {
     showId('error_msg_device');
     const scriptElem = document.createElement('script');
     scriptElem.type = 'text/javascript';
-    scriptElem.src = 'https://cdn.8thwall.com/web/share/qrcode8-1.1.0.js';
-    //scriptElem.src = './qrcode.min.js';
+    //scriptElem.src = 'https://cdn.8thwall.com/web/share/qrcode8-1.1.0.js';
+    scriptElem.src = './qrcode.min.js';
     scriptElem.onload = () => {
       console.log('Test');
       //document.getElementById('qrcode').innerHTML = '<h1>A</h1>';
