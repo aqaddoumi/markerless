@@ -146,16 +146,16 @@ function create() {
     scriptElem.src = './qrcode.min.js';
     scriptElem.onload = () => {
       //document.getElementById('qrcode').innerHTML = qrcode8.generateQR8Svg(redirectUrl, 250, 80)
-      var config = {};
-      config.msg = redirectUrl;
-      config.dim = 256;
-      config.pad = 0;
-      config.mtx = -1;
-      config.ecl = 'H';
-      config.ecb = 1;
-      config.pal = ['#187BF2', '#fff'];
-      config.vrb = 0;
-      document.getElementById('qrcode').innerHTML = new QRCode(config);
+      document.getElementById('qrcode').innerHTML = new QRCode({
+        msg: redirectUrl,
+        dim: 256,
+        pad: 0,
+        mtx: -1,
+        ecl: 'H',
+        ecb: 1,
+        pal: ['#187BF2', '#fff'],
+        vrb: 0,
+      });
     };
     document.getElementById('almostthereContainer').appendChild(scriptElem);
   };
