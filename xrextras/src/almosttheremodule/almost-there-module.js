@@ -151,7 +151,7 @@ function create() {
         250,
         80
       );*/
-      document.getElementById('qrcode').innerHTML = new QRCode({
+      var qr = new QRCode({
         msg: redirectUrl,
         dim: 256,
         pad: 0,
@@ -161,6 +161,7 @@ function create() {
         pal: ['#187BF2', '#fff'],
         vrb: 0,
       });
+      document.getElementById('qrcode').appendChild(qr);
     };
     document.getElementById('almostthereContainer').appendChild(scriptElem);
   };
