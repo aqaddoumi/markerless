@@ -2,7 +2,6 @@ require('!style-loader!css-loader!../fonts/fonts.css');
 require('!style-loader!css-loader!./almost-there-module.css');
 
 const { QRCode } = require('./qrcode.min.js');
-//const QRCode = require('easyqrcodejs');
 
 const html = require('./almost-there-module.html');
 
@@ -147,32 +146,15 @@ function create() {
     var qr = QRCode({
       msg: redirectUrl,
       dim: 256,
-      pad: 0,
+      pad: 2,
       mtx: -1,
       ecl: 'H',
       ecb: 1,
       pal: ['#187BF2', '#fff'],
       vrb: 0,
     });
-
     qr.setAttribute('height', '100%');
-
-    //console.log(qr.getAttribute('width'));
-    //console.log(qr.getAttribute('height'));
-
     document.getElementById('qrcode').appendChild(qr);
-
-    /*var options = {
-      text: redirectUrl,
-      width: 220,
-      height: 220,
-      colorDark: '#187BF2',
-      colorLight: '#fff',
-      quietZone: 15,
-    };*/
-
-    // Create QRCode Object
-    //new QRCode(document.getElementById('qrcode'), options);
 
     //const scriptElem = document.createElement('script');
     //scriptElem.type = 'text/javascript';
@@ -184,7 +166,6 @@ function create() {
         80
       );*/
     //};
-
     //document.getElementById('almostthereContainer').appendChild(scriptElem);
   };
 
