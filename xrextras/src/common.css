@@ -31,7 +31,7 @@
   font-family: 'Nunito', sans-serif;
   font-size: 16pt;
   color: white;
-  letter-spacing: .37;
+  letter-spacing: 0.37;
   line-height: 23pt;
 }
 
@@ -42,8 +42,8 @@
 .error-text-hint {
   font-family: 'Nunito', sans-serif;
   font-size: 14pt;
-  color: #A8A8BA;
-  letter-spacing: .37;
+  color: #a8a8ba;
+  letter-spacing: 0.37;
 }
 
 .error-text-detail {
@@ -72,7 +72,7 @@
   padding-right: 10px;
   border-radius: 10px;
   color: white;
-  background-color: #464766;
+  background-color: #187bf2;
   -webkit-user-select: all;
   /* Chrome 49+ */
   -moz-user-select: all;
@@ -85,7 +85,7 @@
 
 .xrextras-old-style .desktop-home-link {
   color: #323232;
-  background-color:rgba(173, 80, 255, 0.2);
+  background-color: rgba(173, 80, 255, 0.2);
 }
 
 .desktop-home-link.mobile {
