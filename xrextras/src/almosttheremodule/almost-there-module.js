@@ -162,10 +162,11 @@ function create() {
 
     var options = {
       text: redirectUrl,
-      width: 250,
-      height: 250,
+      width: 220,
+      height: 220,
       colorDark: '#187BF2',
       colorLight: '#fff',
+      quietZone: 15,
     };
 
     // Create QRCode Object
