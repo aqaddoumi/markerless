@@ -1,8 +1,8 @@
 require('!style-loader!css-loader!../fonts/fonts.css');
 require('!style-loader!css-loader!./almost-there-module.css');
 
-//const { QRCode } = require('./qrcode.min.js');
-const QRCode = require('easyqrcodejs');
+const { QRCode } = require('./qrcode.min.js');
+//const QRCode = require('easyqrcodejs');
 
 const html = require('./almost-there-module.html');
 
