@@ -147,7 +147,7 @@ function create() {
     var qr = QRCode({
       msg: redirectUrl,
       dim: 256,
-      pad: 3,
+      pad: 0,
       mtx: -1,
       ecl: 'H',
       ecb: 1,
