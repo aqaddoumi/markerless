@@ -4,19 +4,19 @@
 }
 
 .xrextras-old-style #almostthereContainer {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 #qrcode {
   background-color: white;
-  margin: 0 auto;
+  margin: 0 0;
   width: 250px;
   height: 250px;
   padding: 8px;
   border-radius: 20px;
 }
 
-#qrcode>svg {
+#qrcode > svg {
   width: 100%;
   display: block;
 }
@@ -89,7 +89,7 @@
   bottom: 5%;
 }
 
-.bottombarbump .poweredby-img{
+.bottombarbump .poweredby-img {
   bottom: 15%;
 }
 
@@ -104,7 +104,7 @@
 .open-header-top {
   font-family: 'Nunito-SemiBold', sans-serif;
   color: white;
-  letter-spacing: .37;
+  letter-spacing: 0.37;
   font-size: 1em;
   position: fixed;
   top: 0%;
@@ -119,7 +119,7 @@
 .open-header-bottom {
   font-family: 'Nunito-SemiBold', sans-serif;
   color: white;
-  letter-spacing: .37;
+  letter-spacing: 0.37;
   font-size: 1em;
   position: fixed;
   top: 10%;
@@ -134,7 +134,7 @@
 .open-header-unknown {
   font-family: 'Nunito-SemiBold', sans-serif;
   color: white;
-  letter-spacing: .37;
+  letter-spacing: 0.37;
   font-size: 1em;
   position: fixed;
   top: 5%;
@@ -166,7 +166,7 @@
   color: #fff;
   line-height: 2em;
   margin-top: 2vh;
-  letter-spacing: .37;
+  letter-spacing: 0.37;
 }
 
 .xrextras-old-style .desktop-hint {
@@ -185,17 +185,17 @@
   color: white;
   text-decoration: none;
   border: none;
-  background-color: #AD50FF;
+  background-color: #ad50ff;
   padding: 6px 13px;
   border-radius: 10px;
 }
 
 .xrextras-old-style .copy-link-btn {
-  background-color: #7611B7;
+  background-color: #7611b7;
 }
 
 .error-copy-link-copied {
-  background-color: #8083A2 !important;
+  background-color: #8083a2 !important;
 }
 
 .safari-hero-image {
