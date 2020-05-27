@@ -155,6 +155,8 @@ function create() {
       vrb: 0,
     });
 
+    qr.setAttribute('height', '100%');
+
     //console.log(qr.getAttribute('width'));
     //console.log(qr.getAttribute('height'));
 
