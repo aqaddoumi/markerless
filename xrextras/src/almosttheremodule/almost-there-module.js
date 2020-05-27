@@ -161,7 +161,11 @@ function create() {
     //document.getElementById('qrcode').appendChild(qr);
 
     var options = {
-      text: 'https://github.com/ushelp/EasyQRCodeJS',
+      text: redirectUrl,
+      width: 250,
+      height: 250,
+      colorDark: '#187BF2',
+      colorLight: '#fff',
     };
 
     // Create QRCode Object
