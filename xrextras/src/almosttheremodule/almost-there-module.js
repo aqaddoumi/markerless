@@ -145,14 +145,18 @@ function create() {
 
     var qr = QRCode({
       msg: redirectUrl,
-      dim: 250,
-      pad: 0,
+      dim: 256,
+      pad: 3,
       mtx: -1,
       ecl: 'H',
       ecb: 1,
       pal: ['#187BF2', '#fff'],
       vrb: 0,
     });
+
+    console.log(qr.getAttribute('width'));
+    console.log(qr.getAttribute('height'));
+
     document.getElementById('qrcode').appendChild(qr);
 
     //const scriptElem = document.createElement('script');
