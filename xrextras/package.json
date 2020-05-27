@@ -19,5 +19,8 @@
     "svg-url-loader": "^5.0.0",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "easyqrcodejs": "^3.6.0"
   }
 }

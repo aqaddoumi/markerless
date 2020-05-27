@@ -1,7 +1,8 @@
 require('!style-loader!css-loader!../fonts/fonts.css');
 require('!style-loader!css-loader!./almost-there-module.css');
 
-const { QRCode } = require('./qrcode.min.js');
+//const { QRCode } = require('./qrcode.min.js');
+const QRCode = require('easyqrcodejs');
 
 const html = require('./almost-there-module.html');
 
@@ -143,7 +144,7 @@ function create() {
     // Desktop: help our user with a qr code
     showId('error_msg_device');
 
-    var qr = QRCode({
+    /*var qr = QRCode({
       msg: redirectUrl,
       dim: 256,
       pad: 3,
@@ -152,12 +153,19 @@ function create() {
       ecb: 1,
       pal: ['#187BF2', '#fff'],
       vrb: 0,
-    });
+    });*/
 
-    console.log(qr.getAttribute('width'));
-    console.log(qr.getAttribute('height'));
+    //console.log(qr.getAttribute('width'));
+    //console.log(qr.getAttribute('height'));
 
-    document.getElementById('qrcode').appendChild(qr);
+    //document.getElementById('qrcode').appendChild(qr);
+
+    var options = {
+      text: 'https://github.com/ushelp/EasyQRCodeJS',
+    };
+
+    // Create QRCode Object
+    new QRCode(document.getElementById('qrcode'), options);
 
     //const scriptElem = document.createElement('script');
     //scriptElem.type = 'text/javascript';

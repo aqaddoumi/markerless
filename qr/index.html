@@ -3,23 +3,23 @@
   <head>
     <title>TalkAR</title>
     <script src="qrcode.min.js"></script>
+    <script
+      src="./easy.qrcode.min.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
   </head>
   <body>
-    <script>
-      var r = 'https://demo.talkar.app/nicolesong/gfdgfdgdfgdfgfgdfg';
+    <div id="qrcode"></div>
 
-      var qr = new QRCode({
-        msg: r,
-        dim: 250,
-        pad: 0,
-        mtx: -1,
-        ecl: 'H',
-        ecb: 0,
-        pal: ['#187BF2', '#fff'],
-        vrb: 0,
-      });
+    <script type="text/javascript">
+      // Options
+      var options = {
+        text: 'https://github.com/ushelp/EasyQRCodeJS',
+      };
 
-      document.body.appendChild(qr);
+      // Create QRCode Object
+      new QRCode(document.getElementById('qrcode'), options);
     </script>
   </body>
 </html>
